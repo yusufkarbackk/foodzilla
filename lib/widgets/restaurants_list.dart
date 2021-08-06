@@ -13,55 +13,79 @@ class RestaurantList extends StatelessWidget {
           } else if (snapshots.hasData) {
             var items = snapshots.data!;
             var list = items
-                .map((e) => Container(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+                .map((e) => GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => DetailScreen(
+                                      restaurant: e,
+                                    )));
+                      },
                       child: Card(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16)),
+                          elevation: 5,
                           child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(12),
-                            child: Image.network(
-                              e.imageURL,
-                              fit: BoxFit.cover,
-                              width: 100,
-                              height: 100,
-                            ),
-                          ),
-                          SizedBox(
-                            width: 18,
-                          ),
-                          Expanded(
-                            child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(e.name,
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .subtitle1),
-                                  SizedBox(
-                                    height: 7,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                margin: EdgeInsets.symmetric(
+                                    vertical: 12, horizontal: 12),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(12),
+                                  child: Image.network(
+                                    e.imageURL,
+                                    fit: BoxFit.cover,
+                                    width: 100,
+                                    height: 100,
                                   ),
-                                  Text(e.city, style: Theme.of(context).textTheme.overline,),
-                                  SizedBox(height: 5,),
-                                  Row(
-                                    children: [
-                                      Icon(
-                                        Icons.star,
-                                        color: kRed,
-                                        size: 18,
-                                      ),
-                                      SizedBox(
-                                        width: 7,
-                                      ),
-                                      Text('${e.rating}/5')
-                                    ],
-                                  )
-                                ]),
-                          )
-                        ],
-                      )),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 18,
+                              ),
+                              Expanded(
+                                child: Container(
+                                  margin: EdgeInsets.symmetric(vertical: 12),
+                                  child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(e.name,
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .subtitle1),
+                                        SizedBox(
+                                          height: 7,
+                                        ),
+                                        Text(
+                                          e.city,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .overline,
+                                        ),
+                                        SizedBox(
+                                          height: 5,
+                                        ),
+                                        Row(
+                                          children: [
+                                            Icon(
+                                              Icons.star,
+                                              color: kRed,
+                                              size: 18,
+                                            ),
+                                            SizedBox(
+                                              width: 7,
+                                            ),
+                                            Text('${e.rating}/5')
+                                          ],
+                                        )
+                                      ]),
+                                ),
+                              )
+                            ],
+                          )),
                     ))
                 .toList();
             return Column(

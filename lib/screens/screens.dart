@@ -14,6 +14,7 @@ import 'package:provider/provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 
+part 'detail_screen.dart';
 part 'welcome_screen.dart';
 part 'wrapper.dart';
 part 'sign_in_screen.dart';
