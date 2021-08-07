@@ -7,6 +7,7 @@ class MenuScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     RestaurantProvider restaurantProvider =
         Provider.of<RestaurantProvider>(context);
+
     List<Widget> foodList = [];
     List<Widget> drinkList = [];
     for (var item in restaurantProvider.restaurant.menus.foods) {
@@ -75,7 +76,9 @@ class MenuScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: drinkList,
                         ),
-                        SizedBox(height: 16,),
+                        SizedBox(
+                          height: 16,
+                        ),
                         ElevatedButton(
                             onPressed: () {},
                             child: Center(

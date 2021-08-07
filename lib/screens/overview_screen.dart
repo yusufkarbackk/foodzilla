@@ -18,27 +18,9 @@ class OverviewScreen extends StatelessWidget {
                       expandedHeight: 200,
                       pinned: true,
                       flexibleSpace: FlexibleSpaceBar(
-                          background: Stack(
-                        children: [
-                          Image.network(
-                            restaurantProvider.restaurant.imageURL,
-                            fit: BoxFit.cover,
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                begin: Alignment.topCenter,
-                                end: Alignment.bottomCenter,
-                                colors: [
-                                  const Color(0xCC000000),
-                                  const Color(0x00000000),
-                                  const Color(0x00000000),
-                                  const Color(0xCC000000),
-                                ],
-                              ),
-                            ),
-                          )
-                        ],
+                          background: Image.network(
+                        restaurantProvider.restaurant.imageURL,
+                        fit: BoxFit.fitWidth,
                       )))
                 ];
               },
@@ -80,6 +62,11 @@ class OverviewScreen extends StatelessWidget {
                             Text(restaurantProvider.restaurant.city,
                                 style: Theme.of(context).textTheme.subtitle1),
                             GestureDetector(
+                              onTap: () {
+                                RestaurantServices.getRestaurantLocation(
+                                    restaurantProvider
+                                        .restaurant.restaurantLocation);
+                              },
                               child: Text('Navigate to this Restaurant',
                                   style: Theme.of(context)
                                       .textTheme
@@ -129,7 +116,12 @@ class OverviewScreen extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 24),
                       child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => BookingScreen()));
+                          },
                           child: Center(
                             child: Text('Book Now',
                                 style: Theme.of(context)

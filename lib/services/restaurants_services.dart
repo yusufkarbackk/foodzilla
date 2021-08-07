@@ -13,4 +13,12 @@ class RestaurantServices {
     }
     return [];
   }
+
+  static getRestaurantLocation(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      print('error');
+    }
+  }
 }

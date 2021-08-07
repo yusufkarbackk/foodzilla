@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:foodzilla/providers/date_time_provider.dart';
 import 'package:foodzilla/providers/restaurant_provider.dart';
 import 'package:foodzilla/services/services.dart';
 import 'package:foodzilla/shared/constants.dart';
@@ -23,7 +24,8 @@ class MyApp extends StatelessWidget {
       child: MultiProvider(
         providers: [
           ChangeNotifierProvider(create: (context) => UserServices()),
-          ChangeNotifierProvider(create: (context) => RestaurantProvider())
+          ChangeNotifierProvider(create: (context) => RestaurantProvider()),
+          ChangeNotifierProvider(create: (context) => DateTimeProvider())
         ],
         child: MaterialApp(
           title: 'Flutter Demo',

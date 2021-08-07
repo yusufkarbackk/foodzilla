@@ -1,10 +1,14 @@
+import 'dart:math';
+
 import 'package:another_flushbar/flushbar.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:foodzilla/models/transaction_model.dart';
 import 'package:foodzilla/models/user_model.dart';
+import 'package:foodzilla/providers/date_time_provider.dart';
 import 'package:foodzilla/providers/restaurant_provider.dart';
 import 'package:foodzilla/shared/constants.dart';
 import 'package:foodzilla/services/services.dart';
@@ -23,3 +27,4 @@ part 'profile_screen.dart';
 part 'order_screen.dart';
 part 'overview_screen.dart';
 part 'menu_screen.dart';
+part 'booking_screen.dart';

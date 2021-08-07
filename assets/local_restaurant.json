@@ -8,6 +8,7 @@
       "city": "Medan",
       "rating": 4.2,
       "opening_hour": "09.00 - 21.00",
+      "location_url": "https://goo.gl/maps/D9VV7jXEkSkRU9k48",
       "menus": {
         "foods": [
           {
@@ -74,6 +75,7 @@
       "city": "Gorontalo",
       "rating": 4,
       "opening_hour": "10.00 - 21.00",
+      "location_url": "https://goo.gl/maps/wzKGQSXj87FybRzF7",
       "menus": {
         "foods": [
           {
@@ -146,6 +148,7 @@
       "city": "Surabaya",
       "rating": 4.2,
       "opening_hour": "09.00 - 21.00",
+      "location_url": "https://goo.gl/maps/RuRzkPex2t6yTiNg7",
       "menus": {
         "foods": [
           {
@@ -221,6 +224,7 @@
       "city": "Aceh",
       "rating": 4.6,
       "opening_hour": "09.00 - 22.00",
+      "location_url": "https://goo.gl/maps/yzZu2u1MhSCcDudw9",
       "menus": {
         "foods": [
           {
@@ -314,6 +318,7 @@
       "city": "Balikpapan",
       "rating": 4.5,
       "opening_hour": "10.00 - 22.00",
+      "location_url": "https://goo.gl/maps/tkmgTYaHzAdU4D387",
       "menus": {
         "foods": [
           {
@@ -383,6 +388,7 @@
       "city": "Medan",
       "rating": 3.7,
       "opening_hour": "10.00 - 21.00",
+      "location_url": "https://goo.gl/maps/D9VV7jXEkSkRU9k48",
       "menus": {
         "foods": [
           {
@@ -443,6 +449,7 @@
       "city": "Surabaya",
       "rating": 3.9,
       "opening_hour": "09.00 - 21.00",
+      "location_url": "https://goo.gl/maps/RuRzkPex2t6yTiNg7",
       "menus": {
         "foods": [
           {
@@ -518,6 +525,7 @@
       "city": "Balikpapan",
       "rating": 4.1,
       "opening_hour": "09.00 - 21.00",
+      "location_url": "https://goo.gl/maps/tkmgTYaHzAdU4D387",
       "menus": {
         "foods": [
           {
@@ -569,6 +577,7 @@
       "city": "Bali",
       "rating": 4,
       "opening_hour": "09.00 - 21.00",
+      "location_url": "https://goo.gl/maps/u5ZNuehMwFzszDR96",
       "menus": {
         "foods": [
           {
@@ -635,6 +644,7 @@
       "city": "Surabaya",
       "rating": 4.4,
       "opening_hour": "09.00 - 21.00",
+      "location_url": "https://goo.gl/maps/RuRzkPex2t6yTiNg7",
       "menus": {
         "foods": [
           {
