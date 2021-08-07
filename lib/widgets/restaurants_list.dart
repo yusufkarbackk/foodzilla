@@ -5,6 +5,8 @@ class RestaurantList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    RestaurantProvider restaurantProvider =
+        Provider.of<RestaurantProvider>(context);
     return FutureBuilder<List<Restaurant>>(
         future: RestaurantServices.getRestaurants(),
         builder: (context, snapshots) {
@@ -15,12 +17,11 @@ class RestaurantList extends StatelessWidget {
             var list = items
                 .map((e) => GestureDetector(
                       onTap: () {
+                        restaurantProvider.restaurant = e;
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => DetailScreen(
-                                      restaurant: e,
-                                    )));
+                                builder: (context) => DetailScreen()));
                       },
                       child: Card(
                           shape: RoundedRectangleBorder(
@@ -65,6 +66,7 @@ class RestaurantList extends StatelessWidget {
                                               .textTheme
                                               .overline,
                                         ),
+                                        Text(e.openHour),
                                         SizedBox(
                                           height: 5,
                                         ),

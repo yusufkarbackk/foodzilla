@@ -5,10 +5,15 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        color: kDarkRed,
-      ),
+    UserServices userData = Provider.of<UserServices>(context);
+
+    return SafeArea(
+      child: Scaffold(
+          body: SingleChildScrollView(
+        child: Column(
+          children: [Text(userData.foodzillaUser.name)],
+        ),
+      )),
     );
   }
 }

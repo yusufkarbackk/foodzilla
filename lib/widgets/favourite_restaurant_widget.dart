@@ -25,48 +25,57 @@ class FavouriteRestaurant extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   itemCount: favouriteList.length,
                   itemBuilder: (context, index) {
-                    return ClipRRect(
-                      borderRadius: BorderRadius.circular(18),
-                      child: Container(
-                        margin: EdgeInsets.only(right: 20),
-                        height: 150,
-                        width: 120,
-                        color: Color(0xffF6F7F8),
-                        child: Column(
-                          children: [
-                            Stack(
-                              children: [
-                                Image.network(
-                                  favouriteList[index].imageURL,
-                                  width: 120,
-                                  height: 102,
-                                  fit: BoxFit.cover,
-                                ),
-                                Align(
-                                  alignment: Alignment.topRight,
-                                  child: Container(
-                                    width: 50,
-                                    height: 30,
-                                    decoration: BoxDecoration(
-                                        color: kRed,
-                                        borderRadius: BorderRadius.only(
-                                            bottomLeft: Radius.circular(30))),
-                                    child: Center(
-                                        child: Icon(
-                                      Icons.star,
-                                      color: kWhite,
-                                      size: 20,
-                                    )),
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => DetailScreen()));
+                      },
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(18),
+                        child: Container(
+                          margin: EdgeInsets.only(right: 20),
+                          height: 150,
+                          width: 120,
+                          color: Color(0xffF6F7F8),
+                          child: Column(
+                            children: [
+                              Stack(
+                                children: [
+                                  Image.network(
+                                    favouriteList[index].imageURL,
+                                    width: 120,
+                                    height: 102,
+                                    fit: BoxFit.cover,
                                   ),
-                                )
-                              ],
-                            ),
-                            SizedBox(
-                              height: 11,
-                            ),
-                            Text(favouriteList[index].name,
-                                style: Theme.of(context).textTheme.caption)
-                          ],
+                                  Align(
+                                    alignment: Alignment.topRight,
+                                    child: Container(
+                                      width: 50,
+                                      height: 30,
+                                      decoration: BoxDecoration(
+                                          color: kRed,
+                                          borderRadius: BorderRadius.only(
+                                              bottomLeft: Radius.circular(30))),
+                                      child: Center(
+                                          child: Icon(
+                                        Icons.star,
+                                        color: kWhite,
+                                        size: 20,
+                                      )),
+                                    ),
+                                  )
+                                ],
+                              ),
+                              SizedBox(
+                                height: 11,
+                              ),
+                              Text(favouriteList[index].name,
+                                  style: Theme.of(context).textTheme.caption),
+                              Text(favouriteList[index].openHour)
+                            ],
+                          ),
                         ),
                       ),
                     );

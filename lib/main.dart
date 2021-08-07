@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:foodzilla/providers/restaurant_provider.dart';
 import 'package:foodzilla/services/services.dart';
 import 'package:foodzilla/shared/constants.dart';
 import 'package:provider/provider.dart';
@@ -19,8 +20,11 @@ class MyApp extends StatelessWidget {
     return StreamProvider.value(
       value: AuthServices.firebaseUserStream,
       initialData: FirebaseAuth.instance.currentUser,
-      child: ChangeNotifierProvider(
-        create: (context) => UserServices(),
+      child: MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (context) => UserServices()),
+          ChangeNotifierProvider(create: (context) => RestaurantProvider())
+        ],
         child: MaterialApp(
           title: 'Flutter Demo',
           theme: ThemeData(primarySwatch: Colors.red, textTheme: myTextTheme),

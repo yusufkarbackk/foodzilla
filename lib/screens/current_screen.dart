@@ -13,7 +13,7 @@ class _CurrentScreenState extends State<CurrentScreen> {
     pageIndex = 0;
   }
 
-  List<Widget> screenList = [HomeScreen(), ProfileScreen()];
+  List<Widget> screenList = [HomeScreen(), OrderScreen(), ProfileScreen()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +33,11 @@ class _CurrentScreenState extends State<CurrentScreen> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-              icon: FaIcon(FontAwesomeIcons.receipt), label: 'my Order')
+              icon: FaIcon(FontAwesomeIcons.receipt), label: 'my Order'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profile',
+          ),
         ],
       ),
     );

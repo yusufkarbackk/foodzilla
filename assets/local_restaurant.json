@@ -7,6 +7,7 @@
       "pictureId": "https://restaurant-api.dicoding.dev/images/medium/14",
       "city": "Medan",
       "rating": 4.2,
+      "opening_hour": "09.00 - 21.00",
       "menus": {
         "foods": [
           {
@@ -72,6 +73,7 @@
       "pictureId": "https://restaurant-api.dicoding.dev/images/medium/25",
       "city": "Gorontalo",
       "rating": 4,
+      "opening_hour": "10.00 - 21.00",
       "menus": {
         "foods": [
           {
@@ -143,6 +145,7 @@
       "pictureId": "https://restaurant-api.dicoding.dev/images/medium/03",
       "city": "Surabaya",
       "rating": 4.2,
+      "opening_hour": "09.00 - 21.00",
       "menus": {
         "foods": [
           {
@@ -217,6 +220,7 @@
       "pictureId": "https://restaurant-api.dicoding.dev/images/medium/15",
       "city": "Aceh",
       "rating": 4.6,
+      "opening_hour": "09.00 - 22.00",
       "menus": {
         "foods": [
           {
@@ -309,6 +313,7 @@
       "pictureId": "https://restaurant-api.dicoding.dev/images/medium/05",
       "city": "Balikpapan",
       "rating": 4.5,
+      "opening_hour": "10.00 - 22.00",
       "menus": {
         "foods": [
           {
@@ -377,6 +382,7 @@
       "pictureId": "https://restaurant-api.dicoding.dev/images/medium/22",
       "city": "Medan",
       "rating": 3.7,
+      "opening_hour": "10.00 - 21.00",
       "menus": {
         "foods": [
           {
@@ -436,6 +442,7 @@
       "pictureId": "https://restaurant-api.dicoding.dev/images/medium/18",
       "city": "Surabaya",
       "rating": 3.9,
+      "opening_hour": "09.00 - 21.00",
       "menus": {
         "foods": [
           {
@@ -510,6 +517,7 @@
       "pictureId": "https://restaurant-api.dicoding.dev/images/medium/35",
       "city": "Balikpapan",
       "rating": 4.1,
+      "opening_hour": "09.00 - 21.00",
       "menus": {
         "foods": [
           {
@@ -560,6 +568,7 @@
       "pictureId": "https://restaurant-api.dicoding.dev/images/medium/38",
       "city": "Bali",
       "rating": 4,
+      "opening_hour": "09.00 - 21.00",
       "menus": {
         "foods": [
           {
@@ -625,6 +634,7 @@
       "pictureId": "https://restaurant-api.dicoding.dev/images/medium/10",
       "city": "Surabaya",
       "rating": 4.4,
+      "opening_hour": "09.00 - 21.00",
       "menus": {
         "foods": [
           {

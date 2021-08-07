@@ -9,6 +9,7 @@ class Restaurant {
   final String city;
   final double rating;
   final Menus menus;
+  final String openHour;
 
   Restaurant(
       {required this.id,
@@ -17,7 +18,8 @@ class Restaurant {
       required this.imageURL,
       required this.city,
       required this.rating,
-      required this.menus});
+      required this.menus,
+      required this.openHour});
 
   factory Restaurant.fromRawJson(String str) =>
       Restaurant.fromJson(json.decode(str));
@@ -25,14 +27,14 @@ class Restaurant {
   String toRawJson() => json.encode(toJson());
 
   factory Restaurant.fromJson(Map<String, dynamic> json) => Restaurant(
-        id: json["id"],
-        name: json["name"],
-        desc: json["description"],
-        imageURL: json["pictureId"],
-        city: json["city"],
-        rating: json["rating"].toDouble(),
-        menus: Menus.fromJson(json["menus"]),
-      );
+      id: json["id"],
+      name: json["name"],
+      desc: json["description"],
+      imageURL: json["pictureId"],
+      city: json["city"],
+      rating: json["rating"].toDouble(),
+      menus: Menus.fromJson(json["menus"]),
+      openHour: json["opening_hour"]);
 
   Map<String, dynamic> toJson() => {
         "id": id,
@@ -42,5 +44,6 @@ class Restaurant {
         "city": city,
         "rating": rating,
         "menus": menus.toJson(),
+        "opening_hour": openHour
       };
 }
