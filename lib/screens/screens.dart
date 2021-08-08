@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:another_flushbar/flushbar.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -28,3 +29,4 @@ part 'order_screen.dart';
 part 'overview_screen.dart';
 part 'menu_screen.dart';
 part 'booking_screen.dart';
+part 'order_detail_screen.dart';

@@ -9,7 +9,6 @@ class BookingScreen extends StatelessWidget {
         Provider.of<RestaurantProvider>(context);
     UserServices user = Provider.of<UserServices>(context);
     User? userId = Provider.of<User?>(context);
-    DateTimeProvider dateTimeProvider = Provider.of<DateTimeProvider>(context);
 
     return SafeArea(
       child: Scaffold(

@@ -4,7 +4,7 @@ class TransactionServices {
   static CollectionReference _transactionCollection =
       FirebaseFirestore.instance.collection("Foodzilla transactions");
 
-  static Future<void> storeTransaction(
+  static Future<String> storeTransaction(
       FoodzillaTransaction transaction, String userId) async {
     try {
       await _transactionCollection.doc().set({
@@ -18,8 +18,17 @@ class TransactionServices {
         "time": transaction.time,
         "time_in_milliseccondEpoch": transaction.timeInMilliseccondEpoch
       });
+      return "success";
     } catch (e) {
-      print(e);
+      print(e.toString());
+      return e.toString();
     }
+  }
+
+  static Future<QuerySnapshot> getTransaction(String userId) async {
+    QuerySnapshot snapshot =
+        await _transactionCollection.where("userId", isEqualTo: userId).get();
+
+    return snapshot;
   }
 }
