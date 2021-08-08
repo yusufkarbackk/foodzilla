@@ -20,7 +20,7 @@ class BookingScreen extends StatelessWidget {
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
                 width: double.infinity,
-                height: MediaQuery.of(context).size.height / 6,
+                height: MediaQuery.of(context).size.height / 10,
                 child: Stack(
                   children: [
                     GestureDetector(
@@ -129,8 +129,10 @@ class BookingScreen extends StatelessWidget {
               SizedBox(
                 height: 18,
               ),
-              DateTimeWidget(context),
-              SizedBox(height: 22),
+              DateTimeWidget(),
+              SizedBox(
+                height: 80,
+              ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24),
                 child: ElevatedButton(
@@ -149,11 +151,15 @@ class BookingScreen extends StatelessWidget {
                           phone: user.foodzillaUser.phone,
                           bookingCode: code,
                           timeInMilliseccondEpoch:
-                              DateTime.now().millisecondsSinceEpoch);
-
+                              DateTime.now().millisecondsSinceEpoch,
+                          date: Provider.of<DateTimeProvider>(context,
+                                  listen: false)
+                              .getDate,
+                          time: Provider.of<DateTimeProvider>(context,
+                                  listen: false)
+                              .getTime);
                       await TransactionServices.storeTransaction(
                           transaction, userId.uid);
-
                       Navigator.push(
                           context,
                           MaterialPageRoute(

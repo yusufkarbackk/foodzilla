@@ -6,14 +6,20 @@ class TransactionServices {
 
   static Future<void> storeTransaction(
       FoodzillaTransaction transaction, String userId) async {
-    await _transactionCollection.doc().set({
-      "userId": userId,
-      "name": transaction.name,
-      "restaurant": transaction.restaurant,
-      "email": transaction.email,
-      "phone": transaction.phone,
-      "booking_code": transaction.bookingCode,
-      "time_in_milliseccondEpoch": transaction.timeInMilliseccondEpoch
-    });
+    try {
+      await _transactionCollection.doc().set({
+        "userId": userId,
+        "name": transaction.name,
+        "restaurant": transaction.restaurant,
+        "email": transaction.email,
+        "phone": transaction.phone,
+        "booking_code": transaction.bookingCode,
+        "date": transaction.date,
+        "time": transaction.time,
+        "time_in_milliseccondEpoch": transaction.timeInMilliseccondEpoch
+      });
+    } catch (e) {
+      print(e);
+    }
   }
 }
