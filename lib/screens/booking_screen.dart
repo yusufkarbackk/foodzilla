@@ -162,7 +162,7 @@ class BookingScreen extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => HomeScreen()));
+                              builder: (context) => CurrentScreen()));
                     },
                     child: Center(
                       child: Text('Book Now',

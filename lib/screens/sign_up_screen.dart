@@ -31,10 +31,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
             Column(
               children: [
                 Container(
-                  height: 200,
-                  width: 200,
-                  //NOTE: ADD LOGO
-                ),
+                    height: 200,
+                    width: 200,
+                    //NOTE: ADD LOGO
+                    child: Image.asset('assets/foodzilla_red.png')),
                 Container(
                   height: MediaQuery.of(context).size.height * 0.50,
                   child: Column(
@@ -159,6 +159,50 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   flushbarPosition: FlushbarPosition.TOP,
                                   backgroundColor: Color(0xFFFF5C83),
                                   message: "Please fill all the fields",
+                                )..show(context);
+                              } else if (nameController.text.length == 0) {
+                                //NOTE: EMAIL ERROR
+                                setState(() {
+                                  isLogin = false;
+                                });
+                                Flushbar(
+                                  duration: Duration(seconds: 3),
+                                  flushbarPosition: FlushbarPosition.TOP,
+                                  backgroundColor: Color(0xFFFF5C83),
+                                  message: "Please enter your name",
+                                )..show(context);
+                              } else if (phoneController.text.length == 0) {
+                                //NOTE: PASSWORD ERROR
+                                setState(() {
+                                  isLogin = false;
+                                });
+                                Flushbar(
+                                  duration: Duration(seconds: 3),
+                                  flushbarPosition: FlushbarPosition.TOP,
+                                  backgroundColor: Color(0xFFFF5C83),
+                                  message: "Please enter your phone number",
+                                )..show(context);
+                              } else if (emailController.text.length == 0) {
+                                //NOTE: NAME ERROR
+                                setState(() {
+                                  isLogin = false;
+                                });
+                                Flushbar(
+                                  duration: Duration(seconds: 3),
+                                  flushbarPosition: FlushbarPosition.TOP,
+                                  backgroundColor: Color(0xFFFF5C83),
+                                  message: "Please enter your email",
+                                )..show(context);
+                              } else if (passwordController.text.length == 0) {
+                                //NOTE: PHONE ERROR
+                                setState(() {
+                                  isLogin = false;
+                                });
+                                Flushbar(
+                                  duration: Duration(seconds: 3),
+                                  flushbarPosition: FlushbarPosition.TOP,
+                                  backgroundColor: Color(0xFFFF5C83),
+                                  message: "Please enter your password",
                                 )..show(context);
                               } else {
                                 int? phoneNumber =

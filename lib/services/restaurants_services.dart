@@ -14,11 +14,16 @@ class RestaurantServices {
     return [];
   }
 
-  static getRestaurantLocation(String url) async {
+  static getRestaurantLocation(String url, BuildContext context) async {
     if (await canLaunch(url)) {
       await launch(url);
     } else {
-      print('error');
+      Flushbar(
+        duration: Duration(seconds: 3),
+        flushbarPosition: FlushbarPosition.TOP,
+        backgroundColor: Color(0xFFFF5C83),
+        message: "Seems like the page that you were\nrequested is already gone",
+      )..show(context);
     }
   }
 }

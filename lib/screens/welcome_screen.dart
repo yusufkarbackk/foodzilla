@@ -12,14 +12,22 @@ class WelcomeScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Container(width: double.infinity, height: 150),
+              Container(
+                  width: 180,
+                  height: 150,
+                  child: Image.asset('assets/foodzilla_red.png')),
               Container(
                 margin: EdgeInsets.symmetric(horizontal: 24),
                 child: Column(
                   children: [
                     ElevatedButton(
                         style: ElevatedButton.styleFrom(primary: kRed),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => LoginScreen()));
+                        },
                         child: Center(
                           child: Text(
                             'Sign In',

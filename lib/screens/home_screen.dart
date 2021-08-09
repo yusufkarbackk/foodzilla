@@ -52,27 +52,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: 28,
                 ),
 
-                Container(
-                  //NOTE:SEARCH BAR
-                  width: double.infinity,
-                  height: 35,
-                  child: TextField(
-                    decoration: InputDecoration(
-                        prefixIconConstraints:
-                            BoxConstraints(minHeight: 14, minWidth: 14),
-                        prefixIcon: FaIcon(
-                          FontAwesomeIcons.search,
-                          size: 18,
-                        ),
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide(color: kDarkWhite),
-                          borderRadius: BorderRadius.circular(12.0),
-                        )),
-                  ),
-                ),
-                SizedBox(
-                  height: 18,
-                ),
                 Text('Favourites',
                     style: Theme.of(context).textTheme.headline6),
                 SizedBox(

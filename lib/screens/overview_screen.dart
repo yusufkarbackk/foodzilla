@@ -34,8 +34,12 @@ class OverviewScreen extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(restaurantProvider.restaurant.name,
-                              style: Theme.of(context).textTheme.headline5),
+                          Expanded(
+                            child: Container(
+                              child: Text(restaurantProvider.restaurant.name,
+                                  style: Theme.of(context).textTheme.headline5),
+                            ),
+                          ),
                           Row(
                             children: [
                               Icon(
@@ -65,7 +69,8 @@ class OverviewScreen extends StatelessWidget {
                               onTap: () {
                                 RestaurantServices.getRestaurantLocation(
                                     restaurantProvider
-                                        .restaurant.restaurantLocation);
+                                        .restaurant.restaurantLocation,
+                                    context);
                               },
                               child: Text('Navigate to this Restaurant',
                                   style: Theme.of(context)

@@ -37,6 +37,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 200,
                   width: 200,
                   //NOTE: ADD LOGO
+                  child:Image.asset('assets/foodzilla_red.png')
                 ),
                 Container(
                   height: MediaQuery.of(context).size.width * 0.75,
@@ -116,6 +117,26 @@ class _LoginScreenState extends State<LoginScreen> {
                                   backgroundColor: Color(0xFFFF5C83),
                                   message: "Please fill all the fields",
                                 )..show(context);
+                              } else if (emailController.text.length == 0) {
+                                setState(() {
+                                  isLogin = false;
+                                });
+                                Flushbar(
+                                  duration: Duration(seconds: 3),
+                                  flushbarPosition: FlushbarPosition.TOP,
+                                  backgroundColor: Color(0xFFFF5C83),
+                                  message: "Please enter your email",
+                                )..show(context);
+                              } else if (passwordController.text.length == 0) {
+                                setState(() {
+                                  isLogin = false;
+                                });
+                                Flushbar(
+                                  duration: Duration(seconds: 3),
+                                  flushbarPosition: FlushbarPosition.TOP,
+                                  backgroundColor: Color(0xFFFF5C83),
+                                  message: "Please enter your password",
+                                )..show(context);
                               } else {
                                 AuthResult result = await AuthServices.signIn(
                                     emailController.text,
@@ -140,7 +161,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               }
                             },
                             child: Center(
-                              child: FaIcon(FontAwesomeIcons.paw),
+                              child: FaIcon(FontAwesomeIcons.arrowRight),
                             ),
                           )),
                 )

@@ -1,8 +1,11 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 
 class DateTimeProvider extends ChangeNotifier {
-  late String date = "";
-  late String time = "";
+  DateTime pickedDate = DateTime.now();
+  TimeOfDay pickedTime = TimeOfDay.now();
+  String date = "";
+  String time = "";
 
   String get getDate => date;
 
@@ -10,11 +13,9 @@ class DateTimeProvider extends ChangeNotifier {
 
   void addDate(String newDate) {
     date = newDate;
-    notifyListeners();
   }
 
   void addTime(String newTime) {
     time = newTime;
-    notifyListeners();
   }
 }

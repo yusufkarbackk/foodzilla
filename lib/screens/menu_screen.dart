@@ -25,28 +25,10 @@ class MenuScreen extends StatelessWidget {
                         expandedHeight: 200,
                         pinned: true,
                         flexibleSpace: FlexibleSpaceBar(
-                            background: Stack(
-                          children: [
-                            Image.network(
+                          background: Image.network(
                               restaurantProvider.restaurant.imageURL,
-                              fit: BoxFit.cover,
-                            ),
-                            Container(
-                              decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                  begin: Alignment.topCenter,
-                                  end: Alignment.bottomCenter,
-                                  colors: [
-                                    const Color(0xCC000000),
-                                    const Color(0x00000000),
-                                    const Color(0x00000000),
-                                    const Color(0xCC000000),
-                                  ],
-                                ),
-                              ),
-                            )
-                          ],
-                        )))
+                              fit: BoxFit.fitWidth),
+                        ))
                   ];
                 },
                 body: SingleChildScrollView(
@@ -80,7 +62,12 @@ class MenuScreen extends StatelessWidget {
                           height: 16,
                         ),
                         ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => BookingScreen()));
+                            },
                             child: Center(
                               child: Text('Book Now',
                                   style: Theme.of(context)

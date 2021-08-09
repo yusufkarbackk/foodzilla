@@ -6,21 +6,12 @@ class DateTimeWidget extends StatefulWidget {
 }
 
 class _DateTimeWidgetState extends State<DateTimeWidget> {
-  late DateTime pickedDate;
-  late TimeOfDay time;
-  @override
-  void initState() {
-    pickedDate = DateTime.now();
-    time = TimeOfDay.now();
-    super.initState();
-  }
+  DateTime pickedDate = DateTime.now();
+  TimeOfDay time = TimeOfDay.now();
 
   @override
   Widget build(BuildContext context) {
     DateTimeProvider dateTimeProvider = Provider.of(context);
-    dateTimeProvider
-        .addDate("${pickedDate.day}/${pickedDate.month}/${pickedDate.year}");
-    dateTimeProvider.addTime("${time.hour}:${time.minute}");
 
     return Container(
       width: double.infinity,
