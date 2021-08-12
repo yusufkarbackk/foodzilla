@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:foodzilla/models/restaurant_detail.dart';
 import 'package:foodzilla/models/transaction_model.dart';
 import 'package:foodzilla/models/user_model.dart';
 import 'package:foodzilla/providers/date_time_provider.dart';

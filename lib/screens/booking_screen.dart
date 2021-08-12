@@ -50,7 +50,8 @@ class BookingScreen extends StatelessWidget {
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(12),
                             child: Image.network(
-                              restaurantProvider.restaurant.imageURL,
+                              getMediumImage(
+                                  restaurantProvider.restaurant.pictureId),
                               fit: BoxFit.cover,
                               width: 100,
                               height: 100,
@@ -77,7 +78,6 @@ class BookingScreen extends StatelessWidget {
                                     restaurantProvider.restaurant.city,
                                     style: Theme.of(context).textTheme.overline,
                                   ),
-                                  Text(restaurantProvider.restaurant.openHour),
                                   SizedBox(
                                     height: 5,
                                   ),

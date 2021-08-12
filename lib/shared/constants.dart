@@ -34,3 +34,14 @@ final myTextTheme = TextTheme(
   overline: GoogleFonts.poppins(
       fontSize: 10, fontWeight: FontWeight.w400, letterSpacing: 1.5),
 );
+
+String getListOfRestaurant = "https://restaurant-api.dicoding.dev/list";
+
+String getSmallImage(String url) =>
+    "https://restaurant-api.dicoding.dev/images/small/$url";
+
+String getMediumImage(String url) =>
+    "https://restaurant-api.dicoding.dev/images/medium/$url";
+
+String getLargaImage(String url) =>
+    "https://restaurant-api.dicoding.dev/images/large/$url";

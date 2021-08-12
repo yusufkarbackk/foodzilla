@@ -17,7 +17,6 @@ class RestaurantList extends StatelessWidget {
             var list = items
                 .map((e) => GestureDetector(
                       onTap: () {
-                        restaurantProvider.restaurant = e;
                         Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -36,7 +35,7 @@ class RestaurantList extends StatelessWidget {
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(12),
                                   child: Image.network(
-                                    e.imageURL,
+                                    getSmallImage(e.pictureId),
                                     fit: BoxFit.cover,
                                     width: 100,
                                     height: 100,
@@ -66,7 +65,6 @@ class RestaurantList extends StatelessWidget {
                                               .textTheme
                                               .overline,
                                         ),
-                                        Text(e.openHour),
                                         SizedBox(
                                           height: 5,
                                         ),

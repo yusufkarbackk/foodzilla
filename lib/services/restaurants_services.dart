@@ -3,15 +3,24 @@ part of 'services.dart';
 class RestaurantServices {
   static Future<List<Restaurant>> getRestaurants() async {
     try {
-      final data = await rootBundle.rootBundle
-          .loadString('assets/local_restaurant.json');
-      LocalRestaurant list = LocalRestaurant.fromRawJson(data);
+      final data =
+          await http.get(Uri.parse("https://restaurant-api.dicoding.dev/list"));
+      WelcomeRestaurant list = WelcomeRestaurant.fromRawJson(data.toString());
       print('success');
       return list.restaurants;
     } catch (e) {
       print(e);
     }
     return [];
+  }
+
+  static Future<RestaurantDetail> getRestaurantDetail(String id) async {
+    final data =
+        await http.get(Uri.parse("https://restaurant-api.dicoding.dev/$id"));
+    WelcomeRestaurantDetail restaurant =
+        WelcomeRestaurantDetail.fromRawJson(data.toString());
+    print('success');
+    return restaurant.restaurant;
   }
 
   static getRestaurantLocation(String url, BuildContext context) async {

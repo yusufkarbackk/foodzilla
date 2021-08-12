@@ -5,10 +5,8 @@ class OverviewScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     RestaurantProvider restaurantProvider =
         Provider.of<RestaurantProvider>(context);
-    List<String> foodList = [];
-    for (var item in restaurantProvider.restaurant.menus.foods) {
-      foodList.add(item.name);
-    }
+    List<Category> foods = [];
+
     return SafeArea(
       child: Scaffold(
           body: NestedScrollView(
@@ -18,10 +16,27 @@ class OverviewScreen extends StatelessWidget {
                       expandedHeight: 200,
                       pinned: true,
                       flexibleSpace: FlexibleSpaceBar(
-                          background: Image.network(
-                        restaurantProvider.restaurant.imageURL,
-                        fit: BoxFit.fitWidth,
-                      )))
+                          background: FutureBuilder<RestaurantDetail>(
+                              future: RestaurantServices.getRestaurantDetail(
+                                  restaurantProvider.restaurant.id),
+                              builder: (context, snapshot) {
+                                if (snapshot.connectionState ==
+                                    ConnectionState.waiting) {
+                                  return SpinKitFadingCircle(
+                                    color: kLightRed,
+                                    size: 40,
+                                  );
+                                } else if (snapshot.hasData) {
+                                  for (var item in snapshot.data!.menus.foods) {
+                                    foods.add(item);
+                                  }
+                                  return Image.network(
+                                      getMediumImage(snapshot.data!.pictureId));
+                                } else {
+                                  return Text(
+                                      'Something went wrong, please check your connection');
+                                }
+                              })))
                 ];
               },
               body: SingleChildScrollView(
@@ -68,8 +83,8 @@ class OverviewScreen extends StatelessWidget {
                             GestureDetector(
                               onTap: () {
                                 RestaurantServices.getRestaurantLocation(
-                                    restaurantProvider
-                                        .restaurant.restaurantLocation,
+                                    "https://www.google.co.id/maps/place/" +
+                                        restaurantProvider.restaurant.city,
                                     context);
                               },
                               child: Text('Navigate to this Restaurant',
@@ -86,7 +101,7 @@ class OverviewScreen extends StatelessWidget {
                     Padding(
                         padding:
                             EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-                        child: Text(restaurantProvider.restaurant.desc,
+                        child: Text(restaurantProvider.restaurant.description,
                             style: Theme.of(context).textTheme.caption)),
                     Padding(
                       padding: EdgeInsets.symmetric(
@@ -100,7 +115,7 @@ class OverviewScreen extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text('Top Cuisine'),
-                              Text(foodList[0],
+                              Text(foods[0].name,
                                   style: Theme.of(context).textTheme.subtitle1)
                             ],
                           ),
@@ -108,8 +123,6 @@ class OverviewScreen extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text('Opening Hour'),
-                              Text(restaurantProvider.restaurant.openHour,
-                                  style: Theme.of(context).textTheme.subtitle1)
                             ],
                           )
                         ],

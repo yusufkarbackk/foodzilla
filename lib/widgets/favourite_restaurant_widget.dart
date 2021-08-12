@@ -47,7 +47,8 @@ class FavouriteRestaurant extends StatelessWidget {
                               Stack(
                                 children: [
                                   Image.network(
-                                    favouriteList[index].imageURL,
+                                    getSmallImage(
+                                        favouriteList[index].pictureId),
                                     width: 120,
                                     height: 102,
                                     fit: BoxFit.cover,
@@ -76,7 +77,6 @@ class FavouriteRestaurant extends StatelessWidget {
                               ),
                               Text(favouriteList[index].name,
                                   style: Theme.of(context).textTheme.caption),
-                              Text(favouriteList[index].openHour)
                             ],
                           ),
                         ),
