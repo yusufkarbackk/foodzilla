@@ -5,6 +5,7 @@ class FavouriteRestaurant extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     RestaurantProvider restaurantProvider =
         Provider.of<RestaurantProvider>(context);
     return Container(
@@ -29,6 +30,9 @@ class FavouriteRestaurant extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return GestureDetector(
                       onTap: () {
+                        Provider.of<RestaurantDetailProvider>(context,
+                                listen: false)
+                            .fetchRestaurantDetail(favouriteList[index].id);
                         restaurantProvider.restaurant = favouriteList[index];
                         Navigator.push(
                             context,

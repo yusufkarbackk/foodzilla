@@ -7,9 +7,25 @@ class MenuScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     RestaurantProvider restaurantProvider =
         Provider.of<RestaurantProvider>(context);
+    RestaurantDetailProvider restaurantDetailProvider =
+        Provider.of<RestaurantDetailProvider>(context);
 
     List<Widget> foods = [];
+    for (var item
+        in Provider.of<RestaurantDetailProvider>(context, listen: false)
+            .getRestaurantDetail
+            .menus
+            .foods) {
+      foods.add(Text(item.name));
+    }
     List<Widget> drinkList = [];
+    for (var item
+        in Provider.of<RestaurantDetailProvider>(context, listen: false)
+            .getRestaurantDetail
+            .menus
+            .drinks) {
+      drinkList.add(Text(item.name));
+    }
 
     return SafeArea(
         child: Scaffold(
@@ -22,7 +38,7 @@ class MenuScreen extends StatelessWidget {
                         flexibleSpace: FlexibleSpaceBar(
                           background: FutureBuilder<RestaurantDetail>(
                               future: RestaurantServices.getRestaurantDetail(
-                                  restaurantProvider.restaurant.id),
+                                  restaurantProvider.restaurant!.id),
                               builder: (context, snapshot) {
                                 if (snapshot.connectionState ==
                                     ConnectionState.waiting) {
@@ -39,7 +55,9 @@ class MenuScreen extends StatelessWidget {
                                     drinkList.add(Text(item.name));
                                   }
                                   return Image.network(
-                                      getMediumImage(snapshot.data!.pictureId));
+                                    getLargeImage(snapshot.data!.pictureId),
+                                    fit: BoxFit.fitWidth,
+                                  );
                                 } else {
                                   return Text(
                                       'Something went wrong, please check your connection');

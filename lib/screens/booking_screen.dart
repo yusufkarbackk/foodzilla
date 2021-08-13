@@ -51,7 +51,7 @@ class BookingScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(12),
                             child: Image.network(
                               getMediumImage(
-                                  restaurantProvider.restaurant.pictureId),
+                                  restaurantProvider.restaurant!.pictureId),
                               fit: BoxFit.cover,
                               width: 100,
                               height: 100,
@@ -67,7 +67,7 @@ class BookingScreen extends StatelessWidget {
                             child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(restaurantProvider.restaurant.name,
+                                  Text(restaurantProvider.restaurant!.name,
                                       style: Theme.of(context)
                                           .textTheme
                                           .subtitle1),
@@ -75,7 +75,7 @@ class BookingScreen extends StatelessWidget {
                                     height: 7,
                                   ),
                                   Text(
-                                    restaurantProvider.restaurant.city,
+                                    restaurantProvider.restaurant!.city,
                                     style: Theme.of(context).textTheme.overline,
                                   ),
                                   SizedBox(
@@ -92,7 +92,7 @@ class BookingScreen extends StatelessWidget {
                                         width: 7,
                                       ),
                                       Text(
-                                          '${restaurantProvider.restaurant.rating}/5')
+                                          '${restaurantProvider.restaurant!.rating}/5')
                                     ],
                                   )
                                 ]),
@@ -145,7 +145,7 @@ class BookingScreen extends StatelessWidget {
                       FoodzillaTransaction transaction = FoodzillaTransaction(
                           userId: userId!.uid,
                           name: user.foodzillaUser.name,
-                          restaurant: restaurantProvider.restaurant.name,
+                          restaurant: restaurantProvider.restaurant!.name,
                           email: user.foodzillaUser.email,
                           phone: user.foodzillaUser.phone,
                           bookingCode: code,

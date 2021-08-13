@@ -13,10 +13,7 @@ class _DetailScreenState extends State<DetailScreen> {
     pageIndex = 0;
   }
 
-  List<Widget> screenList = [
-    OverviewScreen(),
-    MenuScreen(),
-  ];
+  List<Widget> screenList = [OverviewScreen(), MenuScreen(), ReviewScreen()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,6 +34,8 @@ class _DetailScreenState extends State<DetailScreen> {
           ),
           BottomNavigationBarItem(
               icon: Icon(Icons.menu_book_rounded), label: 'Menu'),
+          BottomNavigationBarItem(
+              icon: FaIcon(FontAwesomeIcons.comment), label: 'Reviews'),
         ],
       ),
     );

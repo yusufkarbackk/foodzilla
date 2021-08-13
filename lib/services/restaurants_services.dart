@@ -5,7 +5,7 @@ class RestaurantServices {
     try {
       final data =
           await http.get(Uri.parse("https://restaurant-api.dicoding.dev/list"));
-      WelcomeRestaurant list = WelcomeRestaurant.fromRawJson(data.toString());
+      WelcomeRestaurant list = WelcomeRestaurant.fromRawJson(data.body);
       print('success');
       return list.restaurants;
     } catch (e) {
@@ -16,9 +16,9 @@ class RestaurantServices {
 
   static Future<RestaurantDetail> getRestaurantDetail(String id) async {
     final data =
-        await http.get(Uri.parse("https://restaurant-api.dicoding.dev/$id"));
+        await http.get(Uri.parse("https://restaurant-api.dicoding.dev/detail/$id"));
     WelcomeRestaurantDetail restaurant =
-        WelcomeRestaurantDetail.fromRawJson(data.toString());
+        WelcomeRestaurantDetail.fromRawJson(data.body);
     print('success');
     return restaurant.restaurant;
   }

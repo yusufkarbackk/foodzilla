@@ -17,6 +17,10 @@ class RestaurantList extends StatelessWidget {
             var list = items
                 .map((e) => GestureDetector(
                       onTap: () {
+                        Provider.of<RestaurantDetailProvider>(context,
+                                listen: false)
+                            .fetchRestaurantDetail(e.id);
+                        restaurantProvider.restaurant = e;
                         Navigator.push(
                             context,
                             MaterialPageRoute(
