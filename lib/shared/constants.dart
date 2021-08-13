@@ -43,5 +43,5 @@ String getSmallImage(String url) =>
 String getMediumImage(String url) =>
     "https://restaurant-api.dicoding.dev/images/medium/$url";
 
-String getLargeImage(String url) =>
+String getLargeImage(String? url) =>
     "https://restaurant-api.dicoding.dev/images/large/$url";

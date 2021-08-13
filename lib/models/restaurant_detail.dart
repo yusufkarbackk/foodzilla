@@ -51,7 +51,7 @@ class RestaurantDetail {
   String description;
   String city;
   String address;
-  String pictureId;
+  String? pictureId;
   List<Category> categories;
   Menus menus;
   double rating;

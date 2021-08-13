@@ -5,11 +5,11 @@ import 'package:http/http.dart' as http;
 enum ResultState { Loading, NoData, HasData, Error }
 
 class RestaurantDetailProvider extends ChangeNotifier {
-  late RestaurantDetail _restaurantDetail;
+  RestaurantDetail? _restaurantDetail;
   String message = "";
   ResultState _state = ResultState.Loading;
 
-  RestaurantDetail get getRestaurantDetail => _restaurantDetail;
+  RestaurantDetail? get getRestaurantDetail => _restaurantDetail;
   ResultState get getState => _state;
   String get getMessage => message;
 

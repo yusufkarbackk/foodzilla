@@ -22,7 +22,7 @@ class ReviewScreen extends StatelessWidget {
                       );
                     } else if (state.getState == ResultState.HasData) {
                       return Image.network(
-                        getLargeImage(state.getRestaurantDetail.pictureId),
+                        getLargeImage(state.getRestaurantDetail?.pictureId),
                         fit: BoxFit.fitWidth,
                       );
                     } else {
@@ -41,7 +41,7 @@ class ReviewScreen extends StatelessWidget {
               );
             } else if (state.getState == ResultState.HasData) {
               List<Widget> reviewList = [];
-              for (var item in state.getRestaurantDetail.customerReviews) {
+              for (var item in state.getRestaurantDetail?.customerReviews ?? []) {
                 reviewList.add(Card(
                   child: ListTile(
                     leading: Text(item.name),

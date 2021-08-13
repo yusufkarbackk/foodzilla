@@ -27,7 +27,7 @@ class OverviewScreen extends StatelessWidget {
                           } else if (state.getState == ResultState.HasData) {
                             return Image.network(
                               getLargeImage(
-                                  state.getRestaurantDetail.pictureId),
+                                  state.getRestaurantDetail?.pictureId),
                               fit: BoxFit.fitWidth,
                             );
                           } else {
@@ -64,7 +64,7 @@ class OverviewScreen extends StatelessWidget {
                                 width: 7,
                               ),
                               Text(
-                                  '${Provider.of<RestaurantDetailProvider>(context, listen: false).getRestaurantDetail.rating}/5',
+                                  '${Provider.of<RestaurantDetailProvider>(context, listen: false).getRestaurantDetail?.rating}/5',
                                   style: Theme.of(context).textTheme.headline6)
                             ],
                           )
@@ -82,7 +82,7 @@ class OverviewScreen extends StatelessWidget {
                             GestureDetector(
                               onTap: () {
                                 RestaurantServices.getRestaurantLocation(
-                                    "https://www.google.co.id/maps/place/${Provider.of<RestaurantDetailProvider>(context, listen: false).getRestaurantDetail.city}",
+                                    "https://www.google.co.id/maps/place/${Provider.of<RestaurantDetailProvider>(context, listen: false).getRestaurantDetail?.city}",
                                     context);
                               },
                               child: Text('Navigate to this Restaurant',
@@ -122,8 +122,9 @@ class OverviewScreen extends StatelessWidget {
                                     );
                                   } else if (state.getState ==
                                       ResultState.HasData) {
-                                    return Text(state.getRestaurantDetail.menus
-                                        .foods[0].name);
+                                    return Text(state.getRestaurantDetail?.menus
+                                            .foods[0].name ??
+                                        "-");
                                   } else {
                                     return Text(state.getMessage);
                                   }
@@ -135,6 +136,27 @@ class OverviewScreen extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text('Opening Hour'),
+                              Consumer<RestaurantDetailProvider>(
+                                builder: (context, state, child) {
+                                  if (state.getState == ResultState.Loading) {
+                                    return SpinKitFadingCircle(
+                                      size: 20,
+                                      color: kLightRed,
+                                    );
+                                  } else if (state.getState ==
+                                      ResultState.HasData) {
+                                    List<Widget> categorylist = [];
+                                    for (var item in state
+                                            .getRestaurantDetail?.categories ??
+                                        []) {
+                                      categorylist.add(Text(item.name + ', '));
+                                    }
+                                    return Row(children: categorylist);
+                                  } else {
+                                    return Text(state.getMessage);
+                                  }
+                                },
+                              )
                             ],
                           )
                         ],

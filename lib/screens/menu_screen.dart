@@ -7,25 +7,10 @@ class MenuScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     RestaurantProvider restaurantProvider =
         Provider.of<RestaurantProvider>(context);
-    RestaurantDetailProvider restaurantDetailProvider =
-        Provider.of<RestaurantDetailProvider>(context);
 
-    List<Widget> foods = [];
-    for (var item
-        in Provider.of<RestaurantDetailProvider>(context, listen: false)
-            .getRestaurantDetail
-            .menus
-            .foods) {
-      foods.add(Text(item.name));
-    }
+    List<Widget> foodList = [];
+
     List<Widget> drinkList = [];
-    for (var item
-        in Provider.of<RestaurantDetailProvider>(context, listen: false)
-            .getRestaurantDetail
-            .menus
-            .drinks) {
-      drinkList.add(Text(item.name));
-    }
 
     return SafeArea(
         child: Scaffold(
@@ -47,13 +32,6 @@ class MenuScreen extends StatelessWidget {
                                     size: 40,
                                   );
                                 } else if (snapshot.hasData) {
-                                  for (var item in snapshot.data!.menus.foods) {
-                                    foods.add(Text(item.name));
-                                  }
-                                  for (var item
-                                      in snapshot.data!.menus.drinks) {
-                                    drinkList.add(Text(item.name));
-                                  }
                                   return Image.network(
                                     getLargeImage(snapshot.data!.pictureId),
                                     fit: BoxFit.fitWidth,
@@ -77,9 +55,26 @@ class MenuScreen extends StatelessWidget {
                         SizedBox(
                           height: 12,
                         ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: foods,
+                        Consumer<RestaurantDetailProvider>(
+                          builder: (context, state, child) {
+                            if (state.getState == ResultState.Loading) {
+                              return SpinKitFadingCircle(
+                                size: 40,
+                                color: kLightWhite,
+                              );
+                            } else if (state.getState == ResultState.HasData) {
+                              for (var item
+                                  in state.getRestaurantDetail?.menus.foods ??
+                                      []) {
+                                foodList.add(Text(item.name));
+                              }
+                              return Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: foodList);
+                            } else {
+                              return Text(state.getMessage);
+                            }
+                          },
                         ),
                         SizedBox(
                           height: 18,
@@ -89,9 +84,26 @@ class MenuScreen extends StatelessWidget {
                         SizedBox(
                           height: 12,
                         ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: drinkList,
+                        Consumer<RestaurantDetailProvider>(
+                          builder: (context, state, child) {
+                            if (state.getState == ResultState.Loading) {
+                              return SpinKitFadingCircle(
+                                size: 40,
+                                color: kLightWhite,
+                              );
+                            } else if (state.getState == ResultState.HasData) {
+                              for (var item
+                                  in state.getRestaurantDetail?.menus.drinks ??
+                                      []) {
+                                drinkList.add(Text(item.name));
+                              }
+                              return Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: drinkList);
+                            } else {
+                              return Text(state.getMessage);
+                            }
+                          },
                         ),
                         SizedBox(
                           height: 16,
