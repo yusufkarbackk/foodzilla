@@ -44,6 +44,21 @@ class _HomeScreenState extends State<HomeScreen> {
                 SizedBox(
                   height: 12,
                 ),
+                Container(
+                  padding: EdgeInsets.only(bottom: 16.0),
+                  child: TextField(
+                      decoration: InputDecoration(
+                        hintText: "Search Dog Breeds Here...",
+                        prefixIcon: Icon(Icons.search),
+                      ),
+                      onChanged: (text) {},
+                      onTap: () {
+                        showModalBottomSheet(
+                            context: context,
+                            isScrollControlled: true,
+                            builder: (context) => SearchScreen());
+                      }),
+                ),
                 Text(
                   'Explore Our Restaurants Now',
                   style: Theme.of(context).textTheme.subtitle1,
