@@ -19,6 +19,7 @@ import 'package:foodzilla/services/services.dart';
 import 'package:foodzilla/widgets/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:intl/intl.dart';
 
 part 'detail_screen.dart';
 part 'welcome_screen.dart';

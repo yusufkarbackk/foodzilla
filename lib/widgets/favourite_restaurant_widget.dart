@@ -5,7 +5,6 @@ class FavouriteRestaurant extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     RestaurantProvider restaurantProvider =
         Provider.of<RestaurantProvider>(context);
     return Container(
@@ -34,6 +33,11 @@ class FavouriteRestaurant extends StatelessWidget {
                                 listen: false)
                             .fetchRestaurantDetail(favouriteList[index].id);
                         restaurantProvider.restaurant = favouriteList[index];
+
+                        Provider.of<RestaurantDetailProvider>(context,
+                                listen: false)
+                            .setHeroTag = favouriteList[index].pictureId;
+
                         Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -50,12 +54,16 @@ class FavouriteRestaurant extends StatelessWidget {
                             children: [
                               Stack(
                                 children: [
-                                  Image.network(
-                                    getSmallImage(
-                                        favouriteList[index].pictureId),
-                                    width: 120,
-                                    height: 102,
-                                    fit: BoxFit.cover,
+                                  Hero(
+                                    tag: "newImageTag" +
+                                        favouriteList[index].pictureId,
+                                    child: Image.network(
+                                      getSmallImage(
+                                          favouriteList[index].pictureId),
+                                      width: 120,
+                                      height: 102,
+                                      fit: BoxFit.cover,
+                                    ),
                                   ),
                                   Align(
                                     alignment: Alignment.topRight,

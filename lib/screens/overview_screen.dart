@@ -20,10 +20,15 @@ class OverviewScreen extends StatelessWidget {
                               color: kLightWhite,
                             );
                           } else if (state.getState == ResultState.HasData) {
-                            return Image.network(
-                              getLargeImage(
-                                  state.getRestaurantDetail?.pictureId),
-                              fit: BoxFit.fitWidth,
+                            return Hero(
+                              tag: "newImageTag" +
+                                  Provider.of<RestaurantDetailProvider>(context)
+                                      .getHeroTag,
+                              child: Image.network(
+                                getLargeImage(
+                                    state.getRestaurantDetail?.pictureId),
+                                fit: BoxFit.fitWidth,
+                              ),
                             );
                           } else {
                             return Text(state.getMessage);

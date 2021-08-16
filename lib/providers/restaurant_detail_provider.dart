@@ -8,10 +8,16 @@ class RestaurantDetailProvider extends ChangeNotifier {
   RestaurantDetail? _restaurantDetail;
   String message = "";
   ResultState _state = ResultState.Loading;
+  String _heroTag = "";
 
   RestaurantDetail? get getRestaurantDetail => _restaurantDetail;
   ResultState get getState => _state;
   String get getMessage => message;
+  String get getHeroTag => _heroTag;
+
+  set setHeroTag(String tag) {
+    this._heroTag = tag;
+  }
 
   Future<dynamic> fetchRestaurantDetail(String id) async {
     try {

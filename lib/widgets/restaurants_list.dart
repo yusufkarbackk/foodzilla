@@ -20,6 +20,9 @@ class RestaurantList extends StatelessWidget {
                         Provider.of<RestaurantDetailProvider>(context,
                                 listen: false)
                             .fetchRestaurantDetail(e.id);
+                        Provider.of<RestaurantDetailProvider>(context,
+                                listen: false)
+                            .setHeroTag = e.pictureId;
                         restaurantProvider.restaurant = e;
                         Navigator.push(
                             context,
