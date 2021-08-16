@@ -5,9 +5,6 @@ class MenuScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    RestaurantProvider restaurantProvider =
-        Provider.of<RestaurantProvider>(context);
-
     List<Widget> foodList = [];
 
     List<Widget> drinkList = [];
@@ -21,27 +18,24 @@ class MenuScreen extends StatelessWidget {
                         expandedHeight: 200,
                         pinned: true,
                         flexibleSpace: FlexibleSpaceBar(
-                          background: FutureBuilder<RestaurantDetail>(
-                              future: RestaurantServices.getRestaurantDetail(
-                                  restaurantProvider.restaurant!.id),
-                              builder: (context, snapshot) {
-                                if (snapshot.connectionState ==
-                                    ConnectionState.waiting) {
-                                  return SpinKitFadingCircle(
-                                    color: kLightRed,
-                                    size: 40,
-                                  );
-                                } else if (snapshot.hasData) {
-                                  return Image.network(
-                                    getLargeImage(snapshot.data!.pictureId),
-                                    fit: BoxFit.fitWidth,
-                                  );
-                                } else {
-                                  return Text(
-                                      'Something went wrong, please check your connection');
-                                }
-                              }),
-                        ))
+                            background: Consumer<RestaurantDetailProvider>(
+                          builder: (context, state, child) {
+                            if (state.getState == ResultState.Loading) {
+                              return SpinKitFadingCircle(
+                                size: 40,
+                                color: kLightWhite,
+                              );
+                            } else if (state.getState == ResultState.HasData) {
+                              return Image.network(
+                                getLargeImage(
+                                    state.getRestaurantDetail?.pictureId),
+                                fit: BoxFit.fitWidth,
+                              );
+                            } else {
+                              return Text(state.getMessage);
+                            }
+                          },
+                        )))
                   ];
                 },
                 body: SingleChildScrollView(

@@ -3,11 +3,6 @@ part of 'screens.dart';
 class OverviewScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Provider.of<RestaurantDetailProvider>(context);
-
-    RestaurantProvider restaurantProvider =
-        Provider.of<RestaurantProvider>(context);
-
     return SafeArea(
       child: Scaffold(
           body: NestedScrollView(
@@ -49,7 +44,11 @@ class OverviewScreen extends StatelessWidget {
                         children: [
                           Expanded(
                             child: Container(
-                              child: Text(restaurantProvider.restaurant!.name,
+                              child: Text(
+                                  Provider.of<RestaurantDetailProvider>(context)
+                                          .getRestaurantDetail
+                                          ?.name ??
+                                      "-",
                                   style: Theme.of(context).textTheme.headline5),
                             ),
                           ),
@@ -77,8 +76,25 @@ class OverviewScreen extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(restaurantProvider.restaurant!.city,
-                                style: Theme.of(context).textTheme.subtitle1),
+                            Row(
+                              children: [
+                                Text(
+                                    '${Provider.of<RestaurantDetailProvider>(context, listen: false).getRestaurantDetail?.address} -',
+                                    style:
+                                        Theme.of(context).textTheme.subtitle1),
+                                SizedBox(
+                                  width: 12,
+                                ),
+                                Text(
+                                    Provider.of<RestaurantDetailProvider>(
+                                                context)
+                                            .getRestaurantDetail
+                                            ?.city ??
+                                        "-",
+                                    style:
+                                        Theme.of(context).textTheme.subtitle1),
+                              ],
+                            ),
                             GestureDetector(
                               onTap: () {
                                 RestaurantServices.getRestaurantLocation(
@@ -86,20 +102,19 @@ class OverviewScreen extends StatelessWidget {
                                     context);
                               },
                               child: Text('Navigate to this Restaurant',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .caption!
-                                      .copyWith(
-                                          color: kLightRed,
-                                          decoration:
-                                              TextDecoration.underline)),
+                                  style: myTextTheme.caption!
+                                      .copyWith(color: kLightRed)),
                             )
                           ],
                         )),
                     Padding(
                         padding:
                             EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-                        child: Text(restaurantProvider.restaurant!.description,
+                        child: Text(
+                            Provider.of<RestaurantDetailProvider>(context)
+                                    .getRestaurantDetail
+                                    ?.description ??
+                                "-",
                             style: Theme.of(context).textTheme.caption)),
                     Padding(
                       padding: EdgeInsets.symmetric(

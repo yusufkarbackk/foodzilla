@@ -44,20 +44,31 @@ class _HomeScreenState extends State<HomeScreen> {
                 SizedBox(
                   height: 12,
                 ),
-                Container(
-                  padding: EdgeInsets.only(bottom: 16.0),
-                  child: TextField(
-                      decoration: InputDecoration(
-                        hintText: "Search Dog Breeds Here...",
-                        prefixIcon: Icon(Icons.search),
-                      ),
-                      onChanged: (text) {},
-                      onTap: () {
-                        showModalBottomSheet(
-                            context: context,
-                            isScrollControlled: true,
-                            builder: (context) => SearchScreen());
-                      }),
+                GestureDetector(
+                  onTap: () {
+                    showModalBottomSheet(
+                        isScrollControlled: true,
+                        context: context,
+                        builder: (context) => SearchScreen());
+                  },
+                  child: Container(
+                      margin: EdgeInsets.symmetric(vertical: 16),
+                      width: double.infinity,
+                      padding:
+                          EdgeInsets.symmetric(vertical: 12.0, horizontal: 12),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(12)),
+                          color: kDarkWhite,
+                          shape: BoxShape.rectangle),
+                      child: Row(
+                        children: [
+                          FaIcon(
+                            FontAwesomeIcons.search,
+                            size: 20,
+                          ),
+                          Text("Search for a restaurant here")
+                        ],
+                      )),
                 ),
                 Text(
                   'Explore Our Restaurants Now',
