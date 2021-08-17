@@ -5,8 +5,6 @@ class BookingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    RestaurantProvider restaurantProvider =
-        Provider.of<RestaurantProvider>(context);
     UserServices user = Provider.of<UserServices>(context);
     User? userId = Provider.of<User?>(context);
 

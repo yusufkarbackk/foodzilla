@@ -41,11 +41,11 @@ class ReviewScreen extends StatelessWidget {
               );
             } else if (state.getState == ResultState.HasData) {
               List<Widget> reviewList = [];
-              for (CustomerReview item in state.getRestaurantDetail?.customerReviews ?? []) {
+              for (CustomerReview item
+                  in state.getRestaurantDetail?.customerReviews ?? []) {
                 reviewList.add(Card(
                   child: ListTile(
                     leading: Text(item.name),
-                    subtitle: Text(DateFormat('yyyy-MM-dd – kk:mm').format(item.date)),
                     title: Text(item.review),
                   ),
                 ));

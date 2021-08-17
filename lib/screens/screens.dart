@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:another_flushbar/flushbar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:connectivity/connectivity.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -19,7 +20,6 @@ import 'package:foodzilla/services/services.dart';
 import 'package:foodzilla/widgets/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:intl/intl.dart';
 
 part 'detail_screen.dart';
 part 'welcome_screen.dart';

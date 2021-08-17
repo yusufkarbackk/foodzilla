@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(create: (context) => RestaurantProvider()),
           ChangeNotifierProvider(create: (context) => DateTimeProvider()),
           ChangeNotifierProvider(
-              create: (context) => RestaurantDetailProvider())
+              create: (context) => RestaurantDetailProvider()),
         ],
         child: MaterialApp(
           title: 'Flutter Demo',

@@ -84,7 +84,16 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: 12,
                 ),
                 //NOTE: FAVOURITE RESTAURANT
-                FavouriteRestaurant(),
+                StreamBuilder(
+                    stream: Connectivity().onConnectivityChanged,
+                    builder: (context, snapshot) {
+                      if (snapshot.data == ConnectivityResult.none) {
+                        return Text("please check your internet");
+                      } else {
+                        return FavouriteRestaurant();
+                      }
+                    }),
+
                 SizedBox(
                   height: 18,
                 ),
@@ -94,7 +103,15 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: 12,
                 ),
                 //NOTE: RESTAURANT LIST
-                RestaurantList()
+                StreamBuilder(
+                    stream: Connectivity().onConnectivityChanged,
+                    builder: (context, snapshot) {
+                      if (snapshot.data == ConnectivityResult.none) {
+                        return Text("please check your internet");
+                      } else {
+                        return RestaurantList();
+                      }
+                    }),
               ],
             ),
           ),

@@ -40,14 +40,13 @@ class RestaurantList extends StatelessWidget {
                                 margin: EdgeInsets.symmetric(
                                     vertical: 12, horizontal: 12),
                                 child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(12),
-                                  child: Image.network(
-                                    getSmallImage(e.pictureId),
-                                    fit: BoxFit.cover,
-                                    width: 100,
-                                    height: 100,
-                                  ),
-                                ),
+                                    borderRadius: BorderRadius.circular(12),
+                                    child: Image.network(
+                                      getSmallImage(e.pictureId),
+                                      fit: BoxFit.cover,
+                                      width: 100,
+                                      height: 100,
+                                    )),
                               ),
                               SizedBox(
                                 width: 18,

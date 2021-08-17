@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:foodzilla/models/restaurant_model.dart';
 
 class WelcomeRestaurantDetail {
   WelcomeRestaurantDetail({
