@@ -45,7 +45,6 @@ class OverviewScreen extends StatelessWidget {
                       padding:
                           EdgeInsets.symmetric(horizontal: 24, vertical: 22),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Expanded(
                             child: Container(
@@ -71,7 +70,11 @@ class OverviewScreen extends StatelessWidget {
                                   '${Provider.of<RestaurantDetailProvider>(context, listen: false).getRestaurantDetail?.rating}/5',
                                   style: Theme.of(context).textTheme.headline6)
                             ],
-                          )
+                          ),
+                          SizedBox(
+                            width: 22,
+                          ),
+                          FavouriteIconWidget()
                         ],
                       ),
                     ),

@@ -174,10 +174,17 @@ class BookingScreen extends StatelessWidget {
                               .getTime);
                       await TransactionServices.storeTransaction(
                           transaction, userId.uid);
+
                       Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) => CurrentScreen()));
+                      Flushbar(
+                        duration: Duration(seconds: 6),
+                        flushbarPosition: FlushbarPosition.TOP,
+                        backgroundColor: Colors.lightGreen,
+                        message: "Your Booking Was Successful",
+                      )..show(context);
                     },
                     child: Center(
                       child: Text('Book Now',

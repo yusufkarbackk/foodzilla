@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:foodzilla/providers/date_time_provider.dart';
+import 'package:foodzilla/providers/db_provider.dart';
 import 'package:foodzilla/providers/restaurant_detail_provider.dart';
 import 'package:foodzilla/providers/restaurant_provider.dart';
 import 'package:foodzilla/services/services.dart';
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(create: (context) => DateTimeProvider()),
           ChangeNotifierProvider(
               create: (context) => RestaurantDetailProvider()),
+          ChangeNotifierProvider(create: (context) => DbProvider())
         ],
         child: MaterialApp(
           title: 'Flutter Demo',
