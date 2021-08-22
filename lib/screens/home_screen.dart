@@ -27,9 +27,25 @@ class _HomeScreenState extends State<HomeScreen> {
                     builder: (context, snapshots) {
                       if (snapshots.hasData) {
                         userData.foodzillaUser = snapshots.data!;
-                        return Text(
-                          "Hello, ${snapshots.data!.name}",
-                          style: Theme.of(context).textTheme.headline5,
+                        return Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Hello, ${snapshots.data!.name}",
+                              style: Theme.of(context).textTheme.headline5,
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            FavouriteScreen()));
+                              },
+                              child: CircleAvatar(
+                                  child: Icon(Icons.favorite_border_rounded)),
+                            )
+                          ],
                         );
                       } else if (snapshots.connectionState ==
                           ConnectionState.waiting) {

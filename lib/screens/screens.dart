@@ -14,13 +14,13 @@ import 'package:foodzilla/models/transaction_model.dart';
 import 'package:foodzilla/models/user_model.dart';
 import 'package:foodzilla/providers/date_time_provider.dart';
 import 'package:foodzilla/providers/restaurant_detail_provider.dart';
-import 'package:foodzilla/providers/restaurant_provider.dart';
 import 'package:foodzilla/shared/constants.dart';
 import 'package:foodzilla/services/services.dart';
 import 'package:foodzilla/widgets/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+part 'favourite_screen.dart';
 part 'detail_screen.dart';
 part 'welcome_screen.dart';
 part 'wrapper.dart';

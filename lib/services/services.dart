@@ -12,6 +12,7 @@ import 'package:foodzilla/models/restaurant_model.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:http/http.dart' as http;
 
+part 'fovurite_restaurant_services.dart';
 part 'auth_services.dart';
 part 'user_services.dart';
 part 'restaurants_services.dart';

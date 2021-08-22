@@ -13,7 +13,12 @@ class _CurrentScreenState extends State<CurrentScreen> {
     pageIndex = 0;
   }
 
-  List<Widget> screenList = [HomeScreen(), OrderScreen(), ProfileScreen()];
+  List<Widget> screenList = [
+    HomeScreen(),
+    OrderScreen(),
+    FavouriteScreen(),
+    ProfileScreen(),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(

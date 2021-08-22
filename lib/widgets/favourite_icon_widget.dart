@@ -8,21 +8,32 @@ class FavouriteIconWidget extends StatefulWidget {
 }
 
 class _FavouriteIconWidgetState extends State<FavouriteIconWidget> {
-  bool isFavourite = false;
+  late bool isFavourite;
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         setState(() {
           if (isFavourite == false) {
-            Provider.of<DbProvider>(context, listen: false).addNote(
+            isFavourite = !isFavourite;
+            FavouriteRestaurantServices.addFavourite(
                 Provider.of<RestaurantDetailProvider>(context, listen: false)
-                    .getRestaurantDetail!);
+                    .getRestaurantDetail!,
+                Provider.of<User?>(context, listen: false)!.uid);
           } else {
-            Provider.of<DbProvider>(context, listen: false).deleteRestaurant(
-                Provider.of<RestaurantDetailProvider>(context, listen: false)
-                    .getRestaurantDetail!
-                    .id);
+            setState(() {
+              isFavourite = !isFavourite;
+              FavouriteRestaurantServices.deleteFavourite(
+                  Provider.of<RestaurantDetailProvider>(context, listen: false)
+                      .getRestaurantDetail!
+                      .id);
+            });
           }
         });
       },
