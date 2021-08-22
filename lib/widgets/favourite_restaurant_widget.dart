@@ -32,6 +32,12 @@ class FavouriteRestaurant extends StatelessWidget {
                         Provider.of<RestaurantDetailProvider>(context,
                                 listen: false)
                             .fetchRestaurantDetail(favouriteList[index].id);
+                        Provider.of<FavouriteRestaurantServices>(context,
+                                listen: false)
+                            .checkIsFavourited(
+                                favouriteList[index].id,
+                                Provider.of<User?>(context, listen: false)!
+                                    .uid);
                         restaurantProvider.restaurant = favouriteList[index];
 
                         Provider.of<RestaurantDetailProvider>(context,

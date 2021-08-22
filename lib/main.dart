@@ -34,6 +34,8 @@ class _MyAppState extends State<MyApp> {
           ChangeNotifierProvider(create: (context) => DateTimeProvider()),
           ChangeNotifierProvider(
               create: (context) => RestaurantDetailProvider()),
+          ChangeNotifierProvider(
+              create: (context) => FavouriteRestaurantServices())
         ],
         child: MaterialApp(
           title: 'Flutter Demo',

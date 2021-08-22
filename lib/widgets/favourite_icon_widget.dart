@@ -11,35 +11,35 @@ class _FavouriteIconWidgetState extends State<FavouriteIconWidget> {
   late bool isFavourite;
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         setState(() {
-          if (isFavourite == false) {
-            isFavourite = !isFavourite;
+          Provider.of<FavouriteRestaurantServices>(context, listen: false)
+                  .setIsfavourite =
+              Provider.of<FavouriteRestaurantServices>(context, listen: false)
+                  .reversedIsFavourite;
+
+          if (Provider.of<FavouriteRestaurantServices>(context, listen: false)
+                  .isFavourite ==
+              true) {
             FavouriteRestaurantServices.addFavourite(
                 Provider.of<RestaurantDetailProvider>(context, listen: false)
                     .getRestaurantDetail!,
                 Provider.of<User?>(context, listen: false)!.uid);
           } else {
-            setState(() {
-              isFavourite = !isFavourite;
-              FavouriteRestaurantServices.deleteFavourite(
-                  Provider.of<RestaurantDetailProvider>(context, listen: false)
-                      .getRestaurantDetail!
-                      .id);
-            });
+            FavouriteRestaurantServices.deleteFavourite(
+                Provider.of<RestaurantDetailProvider>(context, listen: false)
+                    .getRestaurantDetail!
+                    .id,
+                Provider.of<User?>(context, listen: false)!.uid);
           }
         });
       },
       child: CircleAvatar(
         backgroundColor: kWhite,
-        child: isFavourite
+        child: Provider.of<FavouriteRestaurantServices>(context, listen: false)
+                .isFavourite
             ? CircleAvatar(
                 backgroundColor: kWhite,
                 child: Icon(

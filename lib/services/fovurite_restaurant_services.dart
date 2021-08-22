@@ -1,12 +1,19 @@
 part of 'services.dart';
 
-class FavouriteRestaurantServices {
-  List<String> _favouriedRestaurant = [];
+class FavouriteRestaurantServices extends ChangeNotifier {
+  bool _isFavourite = false;
 
-  List<String> get getFavouritedRestaurantName => _favouriedRestaurant;
+  bool get isFavourite => _isFavourite;
+  bool get reversedIsFavourite => !_isFavourite;
 
   static CollectionReference _favouriteCollection =
       FirebaseFirestore.instance.collection("Favourite Restaurant");
+
+  CollectionReference get getFavouriteCollection => _favouriteCollection;
+
+  set setIsfavourite(bool value) {
+    _isFavourite = value;
+  }
 
   static Future<String> addFavourite(
       RestaurantDetail restaurant, String userId) async {
@@ -33,13 +40,36 @@ class FavouriteRestaurantServices {
     return snapshot;
   }
 
-  static Future<void> deleteFavourite(String restaurantId) async {
-    var result = await _favouriteCollection
-        .where("restaurant_id", isEqualTo: restaurantId)
+  static Future<void> deleteFavourite(
+      String restaurantId, String userId) async {
+    var userDocument = await _favouriteCollection
+        .where(
+          "userId",
+          isEqualTo: userId,
+        )
         .get();
 
-    for (var doc in result.docs) {
-      await doc.reference.delete();
+    for (var item in userDocument.docs) {
+      if ((item.data() as dynamic)['restaurant_id'] == restaurantId) {
+        item.reference.delete();
+      }
+    }
+  }
+
+  Future<void> checkIsFavourited(String restaurantId, String userId) async {
+    var userDocs = await _favouriteCollection
+        .where(
+          "userId",
+          isEqualTo: userId,
+        )
+        .get();
+
+    for (var item in userDocs.docs) {
+      if ((item.data() as dynamic)['restaurant_id'] == restaurantId) {
+        _isFavourite = true;
+      } else {
+        _isFavourite = false;
+      }
     }
   }
 }
