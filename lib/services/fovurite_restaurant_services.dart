@@ -1,10 +1,10 @@
 part of 'services.dart';
 
 class FavouriteRestaurantServices extends ChangeNotifier {
-  bool? _isFavourite;
+  bool _isFavourite = false;
 
-  bool get isFavourite => _isFavourite!;
-  bool get reversedIsFavourite => !_isFavourite!;
+  bool get isFavourite => _isFavourite;
+  bool get reversedIsFavourite => !_isFavourite;
 
   static CollectionReference _favouriteCollection =
       FirebaseFirestore.instance.collection("Favourite Restaurant");
@@ -16,15 +16,15 @@ class FavouriteRestaurantServices extends ChangeNotifier {
   }
 
   static Future<String> addFavourite(
-      RestaurantDetail restaurant, String userId) async {
+      RestaurantDetail? restaurant, String? userId) async {
     try {
       await _favouriteCollection.doc().set({
         "userId": userId,
-        "restaurant_id": restaurant.id,
-        "name": restaurant.name,
-        "rating": restaurant.rating,
-        "imageURL": restaurant.pictureId,
-        "city": restaurant.city
+        "restaurant_id": restaurant?.id,
+        "name": restaurant?.name,
+        "rating": restaurant?.rating,
+        "imageURL": restaurant?.pictureId,
+        "city": restaurant?.city
       });
       return "success";
     } catch (e) {
@@ -41,7 +41,7 @@ class FavouriteRestaurantServices extends ChangeNotifier {
   }
 
   static Future<void> deleteFavourite(
-      String restaurantId, String userId) async {
+      String? restaurantId, String? userId) async {
     var userDocument = await _favouriteCollection
         .where(
           "userId",
@@ -67,8 +67,10 @@ class FavouriteRestaurantServices extends ChangeNotifier {
     for (var item in userDocs.docs) {
       if ((item.data() as dynamic)['restaurant_id'] == restaurantId) {
         _isFavourite = true;
+        notifyListeners();
       } else {
         _isFavourite = false;
+        notifyListeners();
       }
     }
   }

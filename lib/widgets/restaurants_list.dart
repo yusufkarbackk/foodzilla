@@ -16,10 +16,20 @@ class RestaurantList extends StatelessWidget {
             var items = snapshots.data!;
             var list = items
                 .map((e) => GestureDetector(
-                      onTap: () {
-                        Provider.of<RestaurantDetailProvider>(context,
+                      onTap: () async {
+                        await Provider.of<RestaurantDetailProvider>(context,
                                 listen: false)
                             .fetchRestaurantDetail(e.id);
+                        await Provider.of<FavouriteRestaurantServices>(context,
+                                listen: false)
+                            .checkIsFavourited(
+                                Provider.of<RestaurantDetailProvider>(context,
+                                            listen: false)
+                                        .getRestaurantDetail
+                                        ?.id ??
+                                    '-',
+                                Provider.of<User?>(context, listen: false)!
+                                    .uid);
                         Provider.of<RestaurantDetailProvider>(context,
                                 listen: false)
                             .setHeroTag = e.pictureId;

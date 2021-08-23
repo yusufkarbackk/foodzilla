@@ -28,16 +28,21 @@ class FavouriteRestaurant extends StatelessWidget {
                   itemCount: favouriteList.length,
                   itemBuilder: (context, index) {
                     return GestureDetector(
-                      onTap: () {
-                        Provider.of<RestaurantDetailProvider>(context,
+                      onTap: () async {
+                        await Provider.of<RestaurantDetailProvider>(context,
                                 listen: false)
                             .fetchRestaurantDetail(favouriteList[index].id);
-                        Provider.of<FavouriteRestaurantServices>(context,
+                        await Provider.of<FavouriteRestaurantServices>(context,
                                 listen: false)
                             .checkIsFavourited(
-                                favouriteList[index].id,
+                                Provider.of<RestaurantDetailProvider>(context,
+                                            listen: false)
+                                        .getRestaurantDetail
+                                        ?.id ??
+                                    '-',
                                 Provider.of<User?>(context, listen: false)!
                                     .uid);
+
                         restaurantProvider.restaurant = favouriteList[index];
 
                         Provider.of<RestaurantDetailProvider>(context,
