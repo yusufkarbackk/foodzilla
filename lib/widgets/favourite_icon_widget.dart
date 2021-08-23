@@ -19,22 +19,21 @@ class _FavouriteIconWidgetState extends State<FavouriteIconWidget> {
                   .setIsfavourite =
               Provider.of<FavouriteRestaurantServices>(context, listen: false)
                   .reversedIsFavourite;
-
-          if (Provider.of<FavouriteRestaurantServices>(context, listen: false)
-                  .isFavourite ==
-              true) {
-            FavouriteRestaurantServices.addFavourite(
-                Provider.of<RestaurantDetailProvider>(context, listen: false)
-                    .getRestaurantDetail!,
-                Provider.of<User?>(context, listen: false)!.uid);
-          } else {
-            FavouriteRestaurantServices.deleteFavourite(
-                Provider.of<RestaurantDetailProvider>(context, listen: false)
-                    .getRestaurantDetail!
-                    .id,
-                Provider.of<User?>(context, listen: false)!.uid);
-          }
         });
+        if (Provider.of<FavouriteRestaurantServices>(context, listen: false)
+                .isFavourite ==
+            true) {
+          FavouriteRestaurantServices.addFavourite(
+              Provider.of<RestaurantDetailProvider>(context, listen: false)
+                  .getRestaurantDetail!,
+              Provider.of<User?>(context, listen: false)!.uid);
+        } else {
+          FavouriteRestaurantServices.deleteFavourite(
+              Provider.of<RestaurantDetailProvider>(context, listen: false)
+                  .getRestaurantDetail!
+                  .id,
+              Provider.of<User?>(context, listen: false)!.uid);
+        }
       },
       child: CircleAvatar(
         backgroundColor: kWhite,

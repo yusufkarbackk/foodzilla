@@ -19,7 +19,7 @@ class RestaurantDetailProvider extends ChangeNotifier {
     this._heroTag = tag;
   }
 
-  Future<dynamic> fetchRestaurantDetail(String id) async {
+  Future<Î> fetchRestaurantDetail(String id) async {
     try {
       _state = ResultState.Loading;
       notifyListeners();

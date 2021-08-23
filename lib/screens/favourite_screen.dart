@@ -8,8 +8,29 @@ class FavouriteScreen extends StatelessWidget {
     return SafeArea(
         child: Scaffold(
       body: SingleChildScrollView(
-          child: FutureBuilder<QuerySnapshot>(
-              future: FavouriteRestaurantServices.getFavourites(
+          child: Column(
+        children: [
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+            width: double.infinity,
+            height: MediaQuery.of(context).size.height / 10,
+            child: Stack(
+              children: [
+                GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: FaIcon(FontAwesomeIcons.arrowLeft)),
+                Align(
+                  alignment: Alignment.topCenter,
+                  child: Text('Booking',
+                      style: Theme.of(context).textTheme.headline6),
+                )
+              ],
+            ),
+          ),
+          StreamBuilder<QuerySnapshot>(
+              stream: FavouriteRestaurantServices.getFavourites(
                   Provider.of<User?>(context)!.uid),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
@@ -41,7 +62,9 @@ class FavouriteScreen extends StatelessWidget {
                 } else {
                   return Text("Error getting data");
                 }
-              })),
+              })
+        ],
+      )),
     ));
   }
 }

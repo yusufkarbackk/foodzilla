@@ -1,10 +1,10 @@
 part of 'services.dart';
 
 class FavouriteRestaurantServices extends ChangeNotifier {
-  bool _isFavourite = false;
+  bool? _isFavourite;
 
-  bool get isFavourite => _isFavourite;
-  bool get reversedIsFavourite => !_isFavourite;
+  bool get isFavourite => _isFavourite!;
+  bool get reversedIsFavourite => !_isFavourite!;
 
   static CollectionReference _favouriteCollection =
       FirebaseFirestore.instance.collection("Favourite Restaurant");
@@ -33,9 +33,9 @@ class FavouriteRestaurantServices extends ChangeNotifier {
     }
   }
 
-  static Future<QuerySnapshot> getFavourites(String userId) async {
-    QuerySnapshot snapshot =
-        await _favouriteCollection.where("userId", isEqualTo: userId).get();
+  static Stream<QuerySnapshot> getFavourites(String userId) {
+    Stream<QuerySnapshot> snapshot =
+        _favouriteCollection.where("userId", isEqualTo: userId).snapshots();
 
     return snapshot;
   }

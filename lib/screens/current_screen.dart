@@ -16,7 +16,6 @@ class _CurrentScreenState extends State<CurrentScreen> {
   List<Widget> screenList = [
     HomeScreen(),
     OrderScreen(),
-    FavouriteScreen(),
     ProfileScreen(),
   ];
   @override
