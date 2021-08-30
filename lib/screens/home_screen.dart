@@ -6,6 +6,20 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final NotificationHelper _notificationHelper = NotificationHelper();
+  @override
+  void initState() {
+    super.initState();
+    _notificationHelper
+        .configureSelectNotificationSubject(DetailScreen.routeName);
+  }
+
+  @override
+  void dispose() {
+    selectNotificationSubject.close();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     User? user = Provider.of<User?>(context);

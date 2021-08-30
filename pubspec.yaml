@@ -21,6 +21,7 @@ environment:
   sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
+  android_alarm_manager: ^2.0.2
   another_flushbar: ^1.10.24
   cloud_firestore: ^2.4.0
   connectivity: ^3.0.6
@@ -30,13 +31,14 @@ dependencies:
   firebase_core: ^1.4.0
   flutter:
     sdk: flutter
+  flutter_local_notifications: ^8.1.1+1
   flutter_spinkit: ^5.0.0
   font_awesome_flutter: ^9.1.0
   google_fonts: ^2.1.0
   http: ^0.13.3
   provider: ^5.0.0
-  sqflite: ^2.0.0+3
-  test:
+  rxdart: ^0.27.1
+  test: null
   url_launcher: ^6.0.9
 
 dev_dependencies:

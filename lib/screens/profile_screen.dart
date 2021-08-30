@@ -33,7 +33,15 @@ class ProfileScreen extends StatelessWidget {
                     Text('Email: ${userData.foodzillaUser.email}',
                         style: Theme.of(context).textTheme.subtitle1),
                     Text('Phone: ${userData.foodzillaUser.phone}',
-                        style: Theme.of(context).textTheme.subtitle1)
+                        style: Theme.of(context).textTheme.subtitle1),
+                    TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SettingsPage()));
+                        },
+                        child: Text("Settings"))
                   ],
                 )),
                 ElevatedButton(

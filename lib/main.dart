@@ -1,17 +1,31 @@
+import 'package:android_alarm_manager/android_alarm_manager.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:foodzilla/providers/date_time_provider.dart';
 import 'package:foodzilla/providers/restaurant_detail_provider.dart';
 import 'package:foodzilla/providers/restaurant_provider.dart';
+import 'package:foodzilla/providers/scheduling_provider.dart';
+import 'package:foodzilla/services/background_service.dart';
+import 'package:foodzilla/services/notofication_helper.dart';
 import 'package:foodzilla/services/services.dart';
 import 'package:foodzilla/shared/constants.dart';
+import 'package:foodzilla/shared/navigation.dart';
 import 'package:provider/provider.dart';
 import 'screens/screens.dart';
 import 'package:firebase_core/firebase_core.dart';
 
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+    FlutterLocalNotificationsPlugin();
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  final NotificationHelper _notificationHelper = NotificationHelper();
+
+  final BackgroundService _service = BackgroundService();
+  _service.initializeIsolate();
+  await AndroidAlarmManager.initialize();
+  await _notificationHelper.initNotifications(flutterLocalNotificationsPlugin);
 
   runApp(MyApp());
 }
@@ -35,9 +49,11 @@ class _MyAppState extends State<MyApp> {
           ChangeNotifierProvider(
               create: (context) => RestaurantDetailProvider()),
           ChangeNotifierProvider(
-              create: (context) => FavouriteRestaurantServices())
+              create: (context) => FavouriteRestaurantServices()),
+          ChangeNotifierProvider(create: (context) => SchedulingProvider())
         ],
         child: MaterialApp(
+          navigatorKey: navigatorKey,
           title: 'Flutter Demo',
           theme: ThemeData(primarySwatch: Colors.red, textTheme: myTextTheme),
           home: Wrapper(),
