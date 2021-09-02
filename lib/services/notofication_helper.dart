@@ -1,7 +1,11 @@
 import 'dart:convert';
+import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:foodzilla/models/restaurant_detail.dart';
+import 'package:foodzilla/providers/restaurant_detail_provider.dart';
+import 'package:foodzilla/screens/screens.dart';
 import 'package:foodzilla/shared/navigation.dart';
+import 'package:provider/provider.dart';
 import 'package:rxdart/rxdart.dart';
 
 final selectNotificationSubject = BehaviorSubject<String>();
@@ -66,12 +70,16 @@ class NotificationHelper {
   }
 
 //NOTE:menangani ketika mengetuk notifikasi yang mengarah ke halaman detail
-  void configureSelectNotificationSubject(String route) {
+  void configureSelectNotificationSubject(BuildContext context) {
     selectNotificationSubject.stream.listen(
       (String payload) async {
         var data = RestaurantDetail.fromJson(json.decode(payload));
 
-        Navigation.intentWithData(route, data);
+        Provider.of<RestaurantDetailProvider>(context).setRestaurantDetail =
+            data;
+
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => DetailScreen()));
       },
     );
   }

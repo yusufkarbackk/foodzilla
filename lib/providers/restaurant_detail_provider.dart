@@ -11,6 +11,10 @@ class RestaurantDetailProvider extends ChangeNotifier {
   String _heroTag = "";
 
   RestaurantDetail? get getRestaurantDetail => _restaurantDetail;
+  set setRestaurantDetail(RestaurantDetail restaurantDetail) {
+    _restaurantDetail = restaurantDetail;
+  }
+
   ResultState get getState => _state;
   String get getMessage => message;
   String get getHeroTag => _heroTag;
