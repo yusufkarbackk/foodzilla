@@ -53,10 +53,14 @@ class _MyAppState extends State<MyApp> {
           ChangeNotifierProvider(create: (context) => SchedulingProvider())
         ],
         child: MaterialApp(
+          initialRoute: Wrapper.routeName,
+          routes: {
+            Wrapper.routeName: (context) => Wrapper(),
+            DetailScreen.routeName: (context) => DetailScreen()
+          },
           navigatorKey: navigatorKey,
           title: 'Flutter Demo',
           theme: ThemeData(primarySwatch: Colors.red, textTheme: myTextTheme),
-          home: Wrapper(),
         ),
       ),
     );

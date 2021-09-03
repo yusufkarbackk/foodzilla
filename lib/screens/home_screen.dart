@@ -10,7 +10,8 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    _notificationHelper.configureSelectNotificationSubject(context);
+    _notificationHelper.configureSelectNotificationSubject(
+        DetailScreen.routeName, context);
   }
 
   @override

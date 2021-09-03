@@ -70,17 +70,15 @@ class NotificationHelper {
   }
 
 //NOTE:menangani ketika mengetuk notifikasi yang mengarah ke halaman detail
-  void configureSelectNotificationSubject(BuildContext context) {
+  void configureSelectNotificationSubject(String route, BuildContext context) {
     selectNotificationSubject.stream.listen(
       (String payload) async {
         var data = RestaurantDetail.fromJson(json.decode(payload));
 
-        Provider.of<RestaurantDetailProvider>(context).setRestaurantDetail =
-            data;
-
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => DetailScreen()));
+        Provider.of<RestaurantDetailProvider>(context, listen: false)
+            .setRestaurantDetail = data;
       },
     );
+    Navigation.intentWithData(route);
   }
 }

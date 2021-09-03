@@ -1,7 +1,7 @@
 part of 'screens.dart';
 
 class DetailScreen extends StatefulWidget {
-  static const routeName = '/article_detail';
+  static const routeName = '/restaurant_detail';
 
   @override
   _DetailScreenState createState() => _DetailScreenState();

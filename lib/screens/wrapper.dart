@@ -1,7 +1,7 @@
 part of 'screens.dart';
 
 class Wrapper extends StatelessWidget {
-  const Wrapper({Key? key}) : super(key: key);
+  static const routeName = "/";
 
   @override
   Widget build(BuildContext context) {

@@ -33,7 +33,7 @@ class BackgroundService {
     final NotificationHelper _notificationHelper = NotificationHelper();
     var result = await RestaurantServices.getRestaurants();
     Random random = Random();
-    int randomNumber = random.nextInt(result.length) + 1;
+    int randomNumber = random.nextInt(result.length);
     var restaurantDetailResult =
         await RestaurantServices.getRestaurantDetail(result[randomNumber].id);
     await _notificationHelper.showNotification(
