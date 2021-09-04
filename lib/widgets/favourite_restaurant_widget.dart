@@ -49,10 +49,7 @@ class FavouriteRestaurant extends StatelessWidget {
                                 listen: false)
                             .setHeroTag = favouriteList[index].pictureId;
 
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => DetailScreen()));
+                        Navigator.pushNamed(context, DetailScreen.routeName);
                       },
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(18),

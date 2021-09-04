@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:foodzilla/models/restaurant_detail.dart';
 import 'package:foodzilla/providers/restaurant_detail_provider.dart';
-import 'package:foodzilla/screens/screens.dart';
 import 'package:foodzilla/shared/navigation.dart';
 import 'package:provider/provider.dart';
 import 'package:rxdart/rxdart.dart';
@@ -77,8 +76,9 @@ class NotificationHelper {
 
         Provider.of<RestaurantDetailProvider>(context, listen: false)
             .setRestaurantDetail = data;
+
+        Navigation.intentWithData(route);
       },
     );
-    Navigation.intentWithData(route);
   }
 }

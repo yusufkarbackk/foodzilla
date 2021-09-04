@@ -12,10 +12,9 @@ class WelcomeScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Container(
-                  width: 180,
-                  height: 150,
-                  child: Image.asset('assets/foodzilla_red.png')),
+              TypewriterAnimatedTextKit(
+                  text: ['FOODZILLA'],
+                  textStyle: TextStyle(color: kLightRed, fontSize: 46)),
               Container(
                 margin: EdgeInsets.symmetric(horizontal: 24),
                 child: Column(

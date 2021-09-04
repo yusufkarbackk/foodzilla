@@ -34,10 +34,7 @@ class RestaurantList extends StatelessWidget {
                                 listen: false)
                             .setHeroTag = e.pictureId;
                         restaurantProvider.restaurant = e;
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => DetailScreen()));
+                        Navigator.pushNamed(context, DetailScreen.routeName);
                       },
                       child: Card(
                           shape: RoundedRectangleBorder(

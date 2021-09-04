@@ -21,6 +21,7 @@ import 'package:foodzilla/services/services.dart';
 import 'package:foodzilla/widgets/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 
 part 'favourite_screen.dart';
 part 'detail_screen.dart';
