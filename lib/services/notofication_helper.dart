@@ -75,7 +75,7 @@ class NotificationHelper {
         var data = RestaurantDetail.fromJson(json.decode(payload));
 
         Provider.of<RestaurantDetailProvider>(context, listen: false)
-            .setRestaurantDetail = data;
+            .fetchRestaurantDetail(data.id);
 
         Navigation.intentWithData(route);
       },

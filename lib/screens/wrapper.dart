@@ -14,6 +14,15 @@ class _WrapperState extends State<Wrapper> {
     super.initState();
     _notificationHelper.configureSelectNotificationSubject(
         DetailScreen.routeName, context);
+    Future.delayed(Duration.zero, () {
+      this.initIsScheduled();
+    });
+  }
+
+  void initIsScheduled() async {
+    Provider.of<SchedulingProvider>(context, listen: false).getData();
+    Provider.of<SchedulingProvider>(context, listen: false).scheduledNews(
+        Provider.of<SchedulingProvider>(context, listen: false).isScheduled);
   }
 
   @override

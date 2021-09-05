@@ -178,7 +178,7 @@ class BookingScreen extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => CurrentScreen()));
+                              builder: (context) => BookingSuccessScreen()));
                       Flushbar(
                         duration: Duration(seconds: 6),
                         flushbarPosition: FlushbarPosition.TOP,

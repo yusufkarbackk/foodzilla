@@ -3,9 +3,6 @@ import 'package:foodzilla/providers/scheduling_provider.dart';
 import 'package:provider/provider.dart';
 
 class SettingsPage extends StatelessWidget {
-  const SettingsPage({Key? key}) : super(key: key);
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
@@ -19,6 +16,7 @@ class SettingsPage extends StatelessWidget {
                     return Switch.adaptive(
                       value: scheduled.isScheduled,
                       onChanged: (value) async {
+                        scheduled.setData(value);
                         scheduled.scheduledNews(value);
                       },
                     );
