@@ -9,6 +9,7 @@ import 'package:foodzilla/screens/screens.dart';
 import 'package:foodzilla/services/services.dart';
 import 'package:foodzilla/shared/constants.dart';
 import 'package:provider/provider.dart';
+import 'package:foodzilla/providers/theme_provider.dart';
 
 part 'restaurant_card.dart';
 part 'auth_input.dart';

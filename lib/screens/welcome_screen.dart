@@ -12,6 +12,7 @@ class WelcomeScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
+              // ignore: deprecated_member_use
               TypewriterAnimatedTextKit(
                   text: ['FOODZILLA'],
                   textStyle: TextStyle(color: kLightRed, fontSize: 46)),

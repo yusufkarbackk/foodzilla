@@ -13,7 +13,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return SafeArea(
       child: Scaffold(
-        backgroundColor: kWhite,
         body: Container(
           height: MediaQuery.of(context).size.height,
           padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
@@ -30,10 +29,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         return Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
-                              "Hello, ${snapshots.data!.name}",
-                              style: Theme.of(context).textTheme.headline5,
-                            ),
+                            Text("Hello, ${snapshots.data!.name}",
+                                style: Theme.of(context).textTheme.headline5),
                             GestureDetector(
                               onTap: () {
                                 Navigator.push(

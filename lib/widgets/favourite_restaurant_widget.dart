@@ -57,7 +57,10 @@ class FavouriteRestaurant extends StatelessWidget {
                           margin: EdgeInsets.only(right: 20),
                           height: 150,
                           width: 120,
-                          color: Color(0xffF6F7F8),
+                          color:
+                              Provider.of<ThemeProvider>(context).getDarkTheme
+                                  ? Color(0xFF151515)
+                                  : kDarkWhite,
                           child: Column(
                             children: [
                               Stack(
