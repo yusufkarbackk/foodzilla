@@ -54,13 +54,22 @@ class FavouriteRestaurant extends StatelessWidget {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(18),
                         child: Container(
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                spreadRadius: 5,
+                                blurRadius: 7,
+                              )
+                            ],
+                            color:
+                                Provider.of<ThemeProvider>(context).getDarkTheme
+                                    ? Color(0xFF151515)
+                                    : Colors.white,
+                          ),
                           margin: EdgeInsets.only(right: 20),
                           height: 150,
                           width: 120,
-                          color:
-                              Provider.of<ThemeProvider>(context).getDarkTheme
-                                  ? Color(0xFF151515)
-                                  : kDarkWhite,
                           child: Column(
                             children: [
                               Stack(

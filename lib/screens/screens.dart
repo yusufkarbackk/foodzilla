@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:math';
 
 import 'package:another_flushbar/flushbar.dart';
@@ -15,11 +16,13 @@ import 'package:foodzilla/models/user_model.dart';
 import 'package:foodzilla/providers/date_time_provider.dart';
 import 'package:foodzilla/providers/restaurant_detail_provider.dart';
 import 'package:foodzilla/providers/scheduling_provider.dart';
+import 'package:foodzilla/providers/theme_provider.dart';
 import 'package:foodzilla/screens/settings_screen.dart';
 import 'package:foodzilla/services/notofication_helper.dart';
 import 'package:foodzilla/shared/constants.dart';
 import 'package:foodzilla/services/services.dart';
 import 'package:foodzilla/widgets/widgets.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';

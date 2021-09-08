@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:another_flushbar/flushbar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -9,8 +11,11 @@ import 'package:foodzilla/models/welcome_model.dart';
 import 'package:foodzilla/screens/screens.dart';
 import 'dart:async';
 import 'package:foodzilla/models/restaurant_model.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:http/http.dart' as http;
+import 'package:path/path.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 
 part 'fovurite_restaurant_services.dart';
 part 'auth_services.dart';

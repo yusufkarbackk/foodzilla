@@ -1,8 +1,14 @@
 part of 'screens.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
 
+  @override
+  _ProfileScreenState createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  String? imagePath;
   @override
   Widget build(BuildContext context) {
     UserServices userData = Provider.of<UserServices>(context);
@@ -19,11 +25,27 @@ class ProfileScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                FaIcon(
-                  FontAwesomeIcons.user,
-                  size: 50,
-                  color: kLightRed,
-                ),
+                Consumer<ThemeProvider>(builder: (context, theme, _) {
+                  return (imagePath != null)
+                      ? Container(
+                          width: 180,
+                          height: 180,
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              image: DecorationImage(
+                                  image: NetworkImage(imagePath!))),
+                        )
+                      : CircleAvatar(
+                          minRadius: 50,
+                          backgroundColor:
+                              theme.getDarkTheme ? Colors.white : Colors.black,
+                          child: FaIcon(
+                            FontAwesomeIcons.user,
+                            size: 50,
+                            color: kLightRed,
+                          ),
+                        );
+                }),
                 Container(
                     child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -41,7 +63,13 @@ class ProfileScreen extends StatelessWidget {
                               MaterialPageRoute(
                                   builder: (context) => SettingsPage()));
                         },
-                        child: Text("Settings"))
+                        child: Text("Settings")),
+                    TextButton(
+                        onPressed: () async {
+                          XFile? file = await getImage();
+                          //imagePath = await UserServices.uploadImage(file);
+                        },
+                        child: Text("Change Profile picture"))
                   ],
                 )),
                 ElevatedButton(
@@ -59,5 +87,9 @@ class ProfileScreen extends StatelessWidget {
         ),
       )),
     );
+  }
+
+  Future<XFile?> getImage() async {
+    return await ImagePicker().pickImage(source: ImageSource.gallery);
   }
 }

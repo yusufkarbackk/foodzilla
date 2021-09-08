@@ -22,7 +22,6 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   final NotificationHelper _notificationHelper = NotificationHelper();
-
   final BackgroundService _service = BackgroundService();
   _service.initializeIsolate();
   await AndroidAlarmManager.initialize();
@@ -37,15 +36,14 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  ThemeProvider themeProvider = ThemeProvider();
   @override
   void initState() {
     super.initState();
-    getAppTheme();
+    initTheme();
   }
 
-  void getAppTheme() async {
-    themeProvider.setDarkTheme = await themeProvider.getTheme();
+  initTheme() async {
+    ThemeProvider();
   }
 
   @override
@@ -75,8 +73,7 @@ class _MyAppState extends State<MyApp> {
               },
               navigatorKey: navigatorKey,
               title: 'Flutter Demo',
-              theme:
-                  Styles.themeData(theme.getDarkTheme, context),
+              theme: Styles.themeData(theme.getDarkTheme, context),
             );
           },
         ),

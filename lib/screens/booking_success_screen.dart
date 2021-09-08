@@ -36,8 +36,11 @@ class BookingSuccessScreen extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("Congratulations! Your booking was successful", style: Theme.of(context).textTheme.headline6),
-                        SizedBox(height: 14,),
+                        Text("Congratulations! Your booking was successful",
+                            style: Theme.of(context).textTheme.headline6),
+                        SizedBox(
+                          height: 14,
+                        ),
                         Text(
                             "Your booking detail is available in Booking Detail Screen")
                       ],
@@ -53,7 +56,7 @@ class BookingSuccessScreen extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => LoginScreen()));
+                                      builder: (context) => OrderScreen()));
                             },
                             child: Center(
                               child: Text(
@@ -69,7 +72,7 @@ class BookingSuccessScreen extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => LoginScreen()));
+                                      builder: (context) => CurrentScreen()));
                             },
                             child: Center(
                               child: Text("Home screen"),

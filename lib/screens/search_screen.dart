@@ -8,6 +8,14 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
+  TextEditingController controller = TextEditingController();
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
   List<RestaurantDetail> restaurantList = [];
   List<RestaurantDetail> tempRestaurantList = [];
   bool isLoading = false;
@@ -47,17 +55,23 @@ class _SearchScreenState extends State<SearchScreen> {
             ),
           ),
           Container(
-            padding: EdgeInsets.only(bottom: 16.0),
-            child: TextField(
-              decoration: InputDecoration(
-                hintText: "Search Restaurants here",
-                prefixIcon: Icon(Icons.search),
-              ),
-              onChanged: (text) {
-                _filterRestaurant(text);
-              },
-            ),
-          ),
+              padding: EdgeInsets.only(bottom: 16.0),
+              child: Consumer<ThemeProvider>(
+                builder: (context, theme, _) {
+                  return TextField(
+                    controller: controller,
+                    decoration: InputDecoration(
+                      hintText: "Search Restaurants here",
+                      hintStyle: TextStyle(
+                          color: theme.getDarkTheme ? Colors.white : kDarkRed),
+                      prefixIcon: Icon(Icons.search),
+                    ),
+                    onChanged: (text) {
+                      _filterRestaurant(text);
+                    },
+                  );
+                },
+              )),
           Expanded(
             child: Center(
                 child: isLoading
@@ -157,18 +171,20 @@ class _SearchScreenState extends State<SearchScreen> {
   }
 
   _filterRestaurant(String text) {
+    List<RestaurantDetail> result = [];
     if (text.isEmpty) {
       setState(() {
         restaurantList = tempRestaurantList;
       });
     } else {
+      result = restaurantList
+          .where((element) =>
+              element.name.toLowerCase().contains(text.toLowerCase()) ||
+              element.menus.foods.any((element) =>
+                  element.name.toLowerCase().contains(text.toLowerCase())))
+          .toList();
       setState(() {
-        restaurantList = restaurantList
-            .where((element) =>
-                element.name.toLowerCase().contains(text.toLowerCase()) ||
-                element.menus.foods.any((element) =>
-                    element.name.toLowerCase().contains(text.toLowerCase())))
-            .toList();
+        restaurantList = result;
       });
     }
   }

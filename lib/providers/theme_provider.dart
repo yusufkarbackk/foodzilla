@@ -3,23 +3,50 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ThemeProvider extends ChangeNotifier {
+  ThemeProvider() {
+    _initTheme();
+  }
+
+  Future<void> _initTheme() async {
+    final prefs = await SharedPreferences.getInstance();
+    final value = prefs.getBool(key) ?? false;
+    setDarkTheme(value);
+  }
+
   bool _darkTheme = false;
+
+  set setTheme(bool value) {
+    _darkTheme = value;
+  }
+
+  final String key = "themeColor";
 
   bool get getDarkTheme => _darkTheme;
 
-  set setDarkTheme(bool value) {
-    _darkTheme = value;
-    setTheme(value);
+  setDarkTheme(bool value) async {
+    if (value) {
+      print('dark');
+    } else {
+      print('light');
+    }
+
+    setTheme = value;
+
     notifyListeners();
   }
 
-  Future<bool> getTheme() async {
+  void getTheme() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.getBool("themeColor") ?? false;
+    if (prefs.getBool(key) == false) {
+      print('theme in light');
+    } else {
+      print('theme is dark');
+    }
+    _darkTheme = prefs.getBool(key) ?? false;
   }
 
-  void setTheme(bool value) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setBool('themeColor', value);
+  void saveTheme(bool value) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setBool(key, value);
   }
 }

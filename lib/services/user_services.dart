@@ -24,4 +24,15 @@ class UserServices extends ChangeNotifier {
         email: (snapshot.data() as dynamic)['email'],
         phone: (snapshot.data() as dynamic)['phone']);
   }
+
+  static Future<String> uploadImage(File imageFile) async {
+    Future<String>? downloadURL;
+    String fileName = basename(imageFile.path);
+    Reference ref = FirebaseStorage.instance.ref().child(fileName);
+    UploadTask task = ref.putFile(imageFile);
+    await task.whenComplete(() {
+      downloadURL = ref.getDownloadURL();
+    });
+    return downloadURL!;
+  }
 }
