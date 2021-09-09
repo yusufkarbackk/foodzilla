@@ -22,7 +22,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kWhite,
+      backgroundColor: Colors.white,
       body: Container(
         width: double.infinity,
         padding: EdgeInsets.symmetric(horizontal: 24, vertical: 20),
@@ -41,15 +41,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       TextField(
+                        style: TextStyle(color: Colors.black),
                         controller: nameController,
                         keyboardType: TextInputType.name,
                         decoration: InputDecoration(
+                            filled: true,
                             errorText:
                                 isNameValid ? null : 'Please enter your name',
                             errorStyle: TextStyle(color: Colors.redAccent),
                             focusedBorder: OutlineInputBorder(
                                 borderSide:
-                                    BorderSide(color: kDarkWhite, width: 2)),
+                                    BorderSide(color: Colors.black, width: 2)),
                             hintText: 'Enter your name',
                             labelText: 'Name',
                             labelStyle: TextStyle(color: kDarkWhite),
@@ -62,16 +64,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         },
                       ),
                       TextField(
+                        style: TextStyle(color: Colors.black),
                         controller: phoneController,
                         keyboardType: TextInputType.phone,
                         decoration: InputDecoration(
+                            filled: true,
                             errorText: isPhoneValid
                                 ? null
                                 : 'Please enter your phone number',
                             errorStyle: TextStyle(color: Colors.redAccent),
                             focusedBorder: OutlineInputBorder(
                                 borderSide:
-                                    BorderSide(color: kDarkWhite, width: 2)),
+                                    BorderSide(color: Colors.black, width: 2)),
                             hintText: 'Enter your phone number',
                             labelText: 'Phone number',
                             labelStyle: TextStyle(color: kDarkWhite),
@@ -84,20 +88,22 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         },
                       ),
                       TextField(
+                        style: TextStyle(color: Colors.black),
                         controller: emailController,
                         keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
+                            filled: true,
                             errorText:
                                 isEmailValid ? null : 'Please enter your emain',
                             errorStyle: TextStyle(color: Colors.redAccent),
                             focusedBorder: OutlineInputBorder(
                                 borderSide:
-                                    BorderSide(color: kDarkWhite, width: 2)),
+                                    BorderSide(color: Colors.black, width: 2)),
                             hintText: 'Enter your email',
                             labelText: 'Email',
                             labelStyle: TextStyle(color: kDarkWhite),
                             border: OutlineInputBorder(
-                                borderSide: BorderSide(color: kDarkWhite))),
+                                borderSide: BorderSide(color: Colors.black))),
                         onChanged: (text) {
                           setState(() {
                             isEmailValid = EmailValidator.validate(text);
@@ -105,17 +111,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         },
                       ),
                       TextField(
+                        style: TextStyle(color: Colors.black),
                         controller: passwordController,
                         obscureText: true,
                         keyboardType: TextInputType.text,
                         decoration: InputDecoration(
+                            filled: true,
                             errorText: isPasswordValid
                                 ? null
                                 : 'Please enter your password(minimum 6 characters)',
                             errorStyle: TextStyle(color: Colors.redAccent),
                             focusedBorder: OutlineInputBorder(
                                 borderSide:
-                                    BorderSide(color: kDarkWhite, width: 2)),
+                                    BorderSide(color: Colors.black, width: 2)),
                             hintText: 'Enter your password',
                             labelText: 'Password',
                             labelStyle: TextStyle(color: kDarkWhite),
@@ -232,7 +240,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               }
                             },
                             child: Center(
-                              child: FaIcon(FontAwesomeIcons.arrowRight),
+                              child: FaIcon(
+                                FontAwesomeIcons.arrowRight,
+                                color: Colors.white,
+                              ),
                             ),
                           )),
                 )

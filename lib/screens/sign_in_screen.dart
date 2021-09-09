@@ -34,17 +34,17 @@ class _LoginScreenState extends State<LoginScreen> {
             Column(
               children: [
                 Container(
-                  height: 200,
-                  width: 200,
-                  //NOTE: ADD LOGO
-                  child:Image.asset('assets/foodzilla_red.png')
-                ),
+                    height: 200,
+                    width: 200,
+                    //NOTE: ADD LOGO
+                    child: Image.asset('assets/foodzilla_red.png')),
                 Container(
                   height: MediaQuery.of(context).size.width * 0.75,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       TextField(
+                        style: TextStyle(color: Colors.black),
                         onChanged: (text) {
                           setState(() {
                             isEmailValid = EmailValidator.validate(text);
@@ -53,12 +53,13 @@ class _LoginScreenState extends State<LoginScreen> {
                         controller: emailController,
                         keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
+                            filled: true,
                             errorStyle: TextStyle(color: Colors.redAccent),
                             errorText:
                                 isEmailValid ? null : "Please fill the email",
                             focusedBorder: OutlineInputBorder(
                                 borderSide:
-                                    BorderSide(color: kDarkWhite, width: 2)),
+                                    BorderSide(color: Colors.black, width: 2)),
                             hintText: "Enter your email",
                             labelText: 'Email',
                             labelStyle: TextStyle(color: kDarkWhite),
@@ -66,6 +67,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 borderSide: BorderSide(color: kDarkWhite))),
                       ),
                       TextField(
+                        style: TextStyle(color: Colors.black),
                         onChanged: (text) {
                           setState(() {
                             isPasswordValid = text.length >= 6;
@@ -75,13 +77,14 @@ class _LoginScreenState extends State<LoginScreen> {
                         controller: passwordController,
                         keyboardType: TextInputType.text,
                         decoration: InputDecoration(
+                            filled: true,
                             errorStyle: TextStyle(color: Colors.redAccent),
                             errorText: isPasswordValid
                                 ? null
                                 : "Please fill the password (minimum 6 characters)",
                             focusedBorder: OutlineInputBorder(
                                 borderSide:
-                                    BorderSide(color: kDarkWhite, width: 2)),
+                                    BorderSide(color: Colors.black, width: 2)),
                             hintText: "Enter your password",
                             labelText: 'Password',
                             labelStyle: TextStyle(color: kDarkWhite),
@@ -161,7 +164,10 @@ class _LoginScreenState extends State<LoginScreen> {
                               }
                             },
                             child: Center(
-                              child: FaIcon(FontAwesomeIcons.arrowRight),
+                              child: FaIcon(
+                                FontAwesomeIcons.arrowRight,
+                                color: Colors.white,
+                              ),
                             ),
                           )),
                 )

@@ -8,7 +8,6 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  String? imagePath;
   @override
   Widget build(BuildContext context) {
     UserServices userData = Provider.of<UserServices>(context);
@@ -26,25 +25,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Consumer<ThemeProvider>(builder: (context, theme, _) {
-                  return (imagePath != null)
-                      ? Container(
-                          width: 180,
-                          height: 180,
-                          decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              image: DecorationImage(
-                                  image: NetworkImage(imagePath!))),
-                        )
-                      : CircleAvatar(
-                          minRadius: 50,
-                          backgroundColor:
-                              theme.getDarkTheme ? Colors.white : Colors.black,
-                          child: FaIcon(
-                            FontAwesomeIcons.user,
-                            size: 50,
-                            color: kLightRed,
-                          ),
-                        );
+                  return CircleAvatar(
+                    minRadius: 50,
+                    backgroundColor:
+                        theme.getDarkTheme ? Colors.white : Colors.black,
+                    child: FaIcon(
+                      FontAwesomeIcons.user,
+                      size: 50,
+                      color: kLightRed,
+                    ),
+                  );
                 }),
                 Container(
                     child: Column(
@@ -64,12 +54,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   builder: (context) => SettingsPage()));
                         },
                         child: Text("Settings")),
-                    TextButton(
-                        onPressed: () async {
-                          XFile? file = await getImage();
-                          //imagePath = await UserServices.uploadImage(file);
-                        },
-                        child: Text("Change Profile picture"))
                   ],
                 )),
                 ElevatedButton(
@@ -87,9 +71,5 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ),
       )),
     );
-  }
-
-  Future<XFile?> getImage() async {
-    return await ImagePicker().pickImage(source: ImageSource.gallery);
   }
 }

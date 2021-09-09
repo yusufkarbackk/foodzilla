@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'dart:math';
 
 import 'package:another_flushbar/flushbar.dart';
@@ -22,7 +21,6 @@ import 'package:foodzilla/services/notofication_helper.dart';
 import 'package:foodzilla/shared/constants.dart';
 import 'package:foodzilla/services/services.dart';
 import 'package:foodzilla/widgets/widgets.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';

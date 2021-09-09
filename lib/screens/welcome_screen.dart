@@ -6,6 +6,7 @@ class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Container(
           height: MediaQuery.of(context).size.height,
@@ -48,7 +49,10 @@ class WelcomeScreen extends StatelessWidget {
                                 builder: (context) => SignUpScreen()));
                       },
                       child: Text('Sign Up',
-                          style: Theme.of(context).textTheme.button),
+                          style: Theme.of(context)
+                              .textTheme
+                              .button!
+                              .copyWith(color: Colors.black)),
                     )
                   ],
                 ),
