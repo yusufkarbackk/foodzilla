@@ -1,19 +1,9 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
+import 'package:foodzilla/models/restaurant_detail.dart';
 
 void main() {
   test("should succesfully parse a json", () async {
-    String restaurantId = "rqdv5juczeskfw1e867";
-
-    final data = await http.get(
-        Uri.parse("https://restaurant-api.dicoding.dev/detail/$restaurantId"));
-
-    print('success');
-    print(data.body);
-    var result = json.decode(data.body);
-
-    expect(result, {
+    Map<String, dynamic> json = {
       "error": false,
       "message": "success",
       "restaurant": {
@@ -60,6 +50,10 @@ void main() {
           }
         ]
       }
-    });
+    };
+
+    var parsedJson = WelcomeRestaurantDetail.fromJson(json);
+
+    expect(parsedJson.restaurant.city, "Medan");
   });
 }
